@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBgDialog"
+        android:clickable="true"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:12"
+            android:textColor="@color/colorWhite"
+            android:textSize="35dp" />
+
+        <LinearLayout
+            android:id="@+id/week_lin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/week0"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_checked"
+                android:checked="false"
+                android:gravity="center"
+                android:text="日"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/week1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_no_checked"
+                android:gravity="center"
+                android:text="一"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/week2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_no_checked"
+                android:gravity="center"
+                android:text="二"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/week3"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_no_checked"
+                android:gravity="center"
+                android:text="三"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/week4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_no_checked"
+                android:gravity="center"
+                android:text="四"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/week5"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_no_checked"
+                android:gravity="center"
+                android:text="五"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/week6"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/week_style_no_checked"
+                android:gravity="center"
+                android:text="六"
+                android:textColor="@color/colorWhite"
+                android:textSize="14dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/week_lin"
+            android:layout_marginTop="20dp"
+            android:gravity="right">
+
+            <TextView
+                android:textSize="14dp"
+                android:id="@+id/cancel"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/ensure"
+                android:textSize="14dp"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@mipmap/delete" />
+    </RelativeLayout>
+</RelativeLayout>
