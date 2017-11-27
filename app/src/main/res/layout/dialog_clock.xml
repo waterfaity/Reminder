@@ -30,7 +30,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/week_style_checked"
+                android:background="@drawable/week_style_no_checked"
                 android:checked="false"
                 android:gravity="center"
                 android:text="日"
