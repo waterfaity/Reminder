@@ -3,6 +3,7 @@ package com.waterfairy.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import android.widget.TimePicker;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.ClockDB;
+import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -61,21 +64,29 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
     }
 
     private void initView() {
+        String weekString = "";
         if (mClockDB == null) {
             //如果为空说明是创建操作 隐藏删除按钮
             mDelete.setVisibility(View.GONE);
-            mTime.setText("00:00");
+            Calendar instance = Calendar.getInstance();
+            int hour = instance.get(Calendar.HOUR_OF_DAY);
+            int minute = instance.get(Calendar.MINUTE);
+            mTime.setText((hour < 10 ? "0" + hour : hour) + ":" + (minute < 10 ? "0" + minute : minute));
         } else {
             mDelete.setOnClickListener(this);
             mTime.setText(mClockDB.getTime());
+            weekString = mClockDB.getWeek();
         }
 
-        mClockDB.getWeek();
         mWeekList = new ArrayList<>();
-        for (int mWeekId : mWeekIds) {
-            TextView week = findViewById(mWeekId);
+        for (int i = 0; i < mWeekIds.length; i++) {
+            TextView week = findViewById(mWeekIds[i]);
             week.setTag(false);
             week.setOnClickListener(new OnWeekClickListener());
+            if (weekString.contains(i + "")) {
+                week.setBackgroundResource(R.drawable.week_style_checked);
+                week.setTag(true);
+            }
             mWeekList.add(week);
         }
 
@@ -98,11 +109,22 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
                 if (onClockHandleListener != null) {
                     dismiss();
                     String week = getWeek();
-                    if (mClockDB == null)//添加
-                        onClockHandleListener.onAdd(mTime.getText().toString(), week);
-                    else //修改
-                        onClockHandleListener.onRevise(mClockDB.setTime(mTime.getText().toString())
-                                .setWeek(week), mPosition);
+
+                    if (mClockDB == null) {//添加
+                        ClockDB clockDB = new ClockDB()
+                                .setTime(mTime.getText().toString())
+                                .setWeek(week)
+                                .setOneTime(TextUtils.isEmpty(week))
+                                .setOpen(true)
+                                .setAccount(ShareTool.getInstance().getAccount());
+                        onClockHandleListener.onAdd(clockDB);
+                    } else { //修改
+                        onClockHandleListener.onRevise(
+                                mClockDB.setTime(mTime.getText().toString())
+                                        .setWeek(week)
+                                        .setOneTime(TextUtils.isEmpty(week)),
+                                mPosition);
+                    }
                 }
                 break;
             //点击取消按钮-不做操作
@@ -129,9 +151,7 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
         for (int i = 0; i < mWeekList.size(); i++) {
             if ((Boolean) mWeekList.get(i).getTag()) {
                 stringBuffer.append(i);
-                if (i != mWeekList.size() - 1) {
-                    stringBuffer.append(",");
-                }
+                stringBuffer.append(",");
             }
         }
         if (stringBuffer.length() != 0) {
@@ -150,13 +170,13 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
     @Override
     public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
         mTimeSelectDialog.dismiss();
-        mTime.setText(hourOfDay + ":" + minute);
+        mTime.setText(((hourOfDay < 10 ? "0" + hourOfDay : hourOfDay) + ":" + (minute < 10 ? "0" + minute : minute)));
     }
 
     public interface OnClockHandleListener {
         void onDelete(ClockDB clockDB, int position);
 
-        void onAdd(String time, String week);
+        void onAdd(ClockDB clockDB);
 
         void onRevise(ClockDB clockDB, int position);
     }
@@ -164,11 +184,13 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
     private class OnWeekClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            if ((Boolean) v.getTag()) {
+            Boolean tag = (Boolean) v.getTag();
+            if (tag) {
                 v.setBackgroundResource(R.drawable.week_style_no_checked);
             } else {
                 v.setBackgroundResource(R.drawable.week_style_checked);
             }
+            v.setTag(!tag);
         }
     }
 }

@@ -16,7 +16,10 @@ import com.waterfairy.reminder.database.ClockDB;
 import com.waterfairy.reminder.database.greendao.ClockDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
+import com.waterfairy.utils.ToastUtils;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ClockActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, ClockDialog.OnClockHandleListener {
@@ -89,7 +92,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     @Override
     public void onClick(View v) {
         int position = (int) v.getTag();
-        Log.i(TAG, "onClick: "+position);
+        Log.i(TAG, "onClick: " + position);
         ClockDB clockDB = mDataList.get(position);
         clockDialog = new ClockDialog(this, clockDB, position, this);
         clockDialog.show();
@@ -113,12 +116,11 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     /**
      * 确认添加
      *
-     * @param time
-     * @param week
+     * @param clockDB
      */
     @Override
-    public void onAdd(String time, String week) {
-        ClockDB clockDB = new ClockDB(true, ShareTool.getInstance().getAccount(), time, week);
+    public void onAdd(ClockDB clockDB) {
+        handleOneTime(clockDB);
         mClockDBDao.insert(clockDB);
         mDataList.add(clockDB);
         mClockAdapter.notifyItemInserted(mDataList.size() - 1);
@@ -132,7 +134,24 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
      */
     @Override
     public void onRevise(ClockDB clockDB, int position) {
+        handleOneTime(clockDB);
         mClockDBDao.update(clockDB);
         mClockAdapter.notifyItemChanged(position);
+    }
+
+    private void handleOneTime(ClockDB clockDB) {
+        if (clockDB.getOneTime()) {
+            //没有选则星期的  只响一次 判断当前时间是否过时
+            Calendar instance = Calendar.getInstance();
+            int currentHour = instance.get(Calendar.HOUR_OF_DAY);
+            int currentMinute = instance.get(Calendar.MINUTE);
+            String showTime = "";
+            if (currentHour < clockDB.getHour() || (currentHour == clockDB.getHour() && currentMinute < clockDB.getMinute())) {
+                showTime = "闹钟时间设为" + clockDB.getTime();
+            } else {
+                showTime = "闹钟时间设为明天" + clockDB.getTime();
+            }
+            ToastUtils.show(showTime);
+        }
     }
 }

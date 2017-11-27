@@ -14,8 +14,8 @@ public class WeekUtils {
         if (!TextUtils.isEmpty(date)) {
             String[] split = date.split(",");
             StringBuilder dateTemp = new StringBuilder();
-            for (int i = 0; i < split.length; i++) {
-                switch (split[i]) {
+            for (String aSplit : split) {
+                switch (aSplit) {
                     case "0":
                         dateTemp.append("周日,");
                         break;
@@ -39,7 +39,8 @@ public class WeekUtils {
                         break;
                 }
             }
-            dateTemp.deleteCharAt(dateTemp.length() - 1);
+            if (!TextUtils.isEmpty(dateTemp.toString()))
+                dateTemp.deleteCharAt(dateTemp.length() - 1);
             return dateTemp.toString();
         }
         return "";
