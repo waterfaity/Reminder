@@ -8,7 +8,7 @@ import com.waterfairy.reminder.database.greendao.DaoSession;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :
+ * des  :数据库管理
  */
 
 public class DataBaseManger {

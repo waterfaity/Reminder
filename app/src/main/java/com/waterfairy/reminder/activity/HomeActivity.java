@@ -3,7 +3,6 @@ package com.waterfairy.reminder.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.waterfairy.dialog.ClockDialog;
 import com.waterfairy.reminder.R;
 
 public class HomeActivity extends AppCompatActivity {

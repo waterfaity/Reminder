@@ -1,4 +1,4 @@
-package com.waterfairy.dialog;
+package com.waterfairy.reminder.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.TimePicker;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.ClockDB;
+import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.List;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :
+ * des  :闹钟设置 (添加/修改/删除)
  */
 
 public class ClockDialog extends Dialog implements View.OnClickListener, TimePicker.OnTimeChangedListener {
@@ -116,13 +117,15 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
                                 .setWeek(week)
                                 .setOneTime(TextUtils.isEmpty(week))
                                 .setOpen(true)
-                                .setAccount(ShareTool.getInstance().getAccount());
+                                .setAccount(ShareTool.getInstance().getAccount())
+                                .setCreateTime(System.currentTimeMillis()) ;
                         onClockHandleListener.onAdd(clockDB);
                     } else { //修改
                         onClockHandleListener.onRevise(
                                 mClockDB.setTime(mTime.getText().toString())
                                         .setWeek(week)
-                                        .setOneTime(TextUtils.isEmpty(week)),
+                                        .setOneTime(TextUtils.isEmpty(week))
+                                        .setUpdateTime(System.currentTimeMillis()),
                                 mPosition);
                     }
                 }
@@ -174,10 +177,27 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
     }
 
     public interface OnClockHandleListener {
+        /**
+         * 删除
+         *
+         * @param clockDB
+         * @param position 删除位置
+         */
         void onDelete(ClockDB clockDB, int position);
 
+        /**
+         * 添加
+         *
+         * @param clockDB
+         */
         void onAdd(ClockDB clockDB);
 
+        /**
+         * 修改
+         *
+         * @param clockDB
+         * @param position 修改位置
+         */
         void onRevise(ClockDB clockDB, int position);
     }
 

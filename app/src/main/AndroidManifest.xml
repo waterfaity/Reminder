@@ -46,6 +46,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             />
+        <receiver android:name=".broadcast.ClockBroadcast">
+            <intent-filter>
+                <action android:name="com.waterfairy.reminder.clock.start"/>
+                <action android:name="com.waterfairy.reminder.clock.stop"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

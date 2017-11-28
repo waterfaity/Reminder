@@ -9,17 +9,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
-import com.waterfairy.dialog.ClockDialog;
+import com.waterfairy.reminder.dialog.ClockDialog;
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.adapter.ClockAdapter;
 import com.waterfairy.reminder.database.ClockDB;
 import com.waterfairy.reminder.database.greendao.ClockDBDao;
+import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.ToastUtils;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class ClockActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, ClockDialog.OnClockHandleListener {
@@ -124,6 +124,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
         mClockDBDao.insert(clockDB);
         mDataList.add(clockDB);
         mClockAdapter.notifyItemInserted(mDataList.size() - 1);
+        ClockManger.getInstance().setClock(clockDB);
     }
 
     /**

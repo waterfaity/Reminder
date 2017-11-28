@@ -1,4 +1,4 @@
-package com.waterfairy.dialog;
+package com.waterfairy.reminder.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,7 +14,7 @@ import java.util.Calendar;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :
+ * des  :选择时间
  */
 
 public class TimeSelectDialog extends Dialog {
