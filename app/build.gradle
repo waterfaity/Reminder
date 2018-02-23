@@ -37,9 +37,14 @@ dependencies {
     compile 'net.zetetic:android-database-sqlcipher:3.5.7@aar'
     //recyclerview 列表展示
     compile 'com.android.support:recyclerview-v7:26.1.0'
+    //retrofit 网络请求
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    //时间选择
+    compile 'com.github.codbking:PickTime:v1.0.1'
 }
 greendao {
-    schemaVersion 1
+    schemaVersion 5
     daoPackage 'com.waterfairy.reminder.database.greendao'
     targetGenDir 'src/main/java'
 }

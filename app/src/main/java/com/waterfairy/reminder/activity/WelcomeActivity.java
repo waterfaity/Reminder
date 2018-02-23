@@ -40,14 +40,14 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if (!ShareTool.getInstance().isLogin()) {
+//                if (!ShareTool.getInstance().isLogin()) {
                     startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-                } else {
-                    startActivity(new Intent(WelcomeActivity.this, ClockActivity.class));
-                }
+//                } else {
+//                    startActivity(new Intent(WelcomeActivity.this, ClockActivity.class));
+//                }
                 finish();
             }
-        }.sendEmptyMessageDelayed(0, 300);
+        }.sendEmptyMessageDelayed(0, 2000);
     }
 
     @Override

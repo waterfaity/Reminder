@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/bg_login"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg_login"
+    android:orientation="vertical"
     tools:context="com.waterfairy.reminder.activity.HomeActivity">
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorActionBar"
+        android:gravity="center"
+        android:onClick="memorandum"
+        android:text="备忘录"
+        android:textColor="@color/colorWhite"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#36a69b"
+        android:gravity="center"
+        android:onClick="everyday"
+        android:text="每天"
+        android:textColor="@color/colorWhite"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#2d8e84"
+        android:gravity="center"
+        android:onClick="clock"
+        android:text="闹钟"
+        android:textColor="@color/colorWhite"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1c6961"
+        android:gravity="center"
+        android:onClick="classList"
+        android:text="课程表"
+        android:textColor="@color/colorWhite"
+        android:textSize="16dp" />
+</LinearLayout>

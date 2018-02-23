@@ -3,6 +3,7 @@
     package="com.waterfairy.reminder">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -42,10 +43,34 @@
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".activity.ClockActivity"
+        <activity
+            android:name=".activity.ClockActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar"
-            />
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity.MemorandumActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity.MemorandumAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity.EveryDayAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity.EveryDayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity.ClassListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity.ClassAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>

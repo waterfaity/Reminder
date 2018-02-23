@@ -20,7 +20,7 @@ import com.waterfairy.reminder.utils.ShareTool;
 import java.util.List;
 
 public class ClockActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, ClockDialog.OnClockHandleListener {
-    private static final String TAG = "clock";
+    private static final String TAG = "clock1";
     private ClockAdapter mClockAdapter;
     private ClockDBDao mClockDBDao;
     private List<ClockDB> mDataList;
@@ -89,7 +89,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     @Override
     public void onClick(View v) {
         int position = (int) v.getTag();
-        Log.i(TAG, "onClick: "+position);
+        Log.i(TAG, "onClick: " + position);
         ClockDB clockDB = mDataList.get(position);
         clockDialog = new ClockDialog(this, clockDB, position, this);
         clockDialog.show();
@@ -134,5 +134,9 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     public void onRevise(ClockDB clockDB, int position) {
         mClockDBDao.update(clockDB);
         mClockAdapter.notifyItemChanged(position);
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

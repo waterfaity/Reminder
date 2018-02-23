@@ -23,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/time"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/week0"
@@ -114,23 +115,23 @@
             android:gravity="right">
 
             <TextView
-                android:textSize="14dp"
                 android:id="@+id/cancel"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:text="取消"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/ensure"
-                android:textSize="14dp"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:text="确定"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="14dp" />
         </LinearLayout>
 
         <ImageView

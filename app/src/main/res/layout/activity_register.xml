@@ -50,7 +50,7 @@
                 android:maxLength="12"
                 android:singleLine="true"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
+                android:textColorHint="@color/colorGrayWhite"
                 android:textSize="14dp" />
         </LinearLayout>
 
@@ -80,7 +80,7 @@
                 android:maxLength="12"
                 android:singleLine="true"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
+                android:textColorHint="@color/colorGrayWhite"
                 android:textSize="14dp" />
         </LinearLayout>
 
@@ -110,7 +110,7 @@
                 android:maxLength="12"
                 android:singleLine="true"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorGray"
+                android:textColorHint="@color/colorGrayWhite"
                 android:textSize="14dp" />
         </LinearLayout>
 

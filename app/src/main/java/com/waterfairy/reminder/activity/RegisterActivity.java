@@ -40,6 +40,10 @@ public class RegisterActivity extends AppCompatActivity {
             ToastUtils.show("请输入帐号");
             return;
         }
+        if (TextUtils.equals(account, "admin")) {
+            ToastUtils.show("该账号为管理员账号");
+            return;
+        }
         if (TextUtils.isEmpty(password)) {
             ToastUtils.show("请输入密码");
             return;
