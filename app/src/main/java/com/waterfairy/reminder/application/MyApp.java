@@ -23,16 +23,6 @@ public class MyApp extends Application {
         myApp = this;
         ShareTool.getInstance().initShare();
         ToastUtils.initToast(this);
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "movie-db");
-
-        //获取一个SQLiteDatabase
-        SQLiteDatabase database = helper.getWritableDatabase();
-
-        //使用数据库对象构造一个DaoMaster
-        DaoMaster daoMaster = new DaoMaster(database);
-
-        //开启DoaSession
-//        daoSession = daoMaster.newSession();
     }
 
     public static MyApp getApp() {

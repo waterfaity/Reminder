@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.greendao.UserDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
+import com.waterfairy.reminder.manger.DataInitManger;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.PermissionUtils;
 
@@ -35,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        DataBaseManger.getInstance().initDataBase();
+        DataInitManger.getInstance().init();
         new Handler() {
             @Override
             public void handleMessage(Message msg) {

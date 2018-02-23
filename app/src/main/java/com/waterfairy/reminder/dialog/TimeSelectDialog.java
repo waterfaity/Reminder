@@ -1,4 +1,4 @@
-package com.waterfairy.dialog;
+package com.waterfairy.reminder.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,11 +8,13 @@ import android.widget.TimePicker;
 
 import com.waterfairy.reminder.R;
 
+import java.util.Calendar;
+
 /**
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :
+ * des  :选择时间
  */
 
 public class TimeSelectDialog extends Dialog {
@@ -41,6 +43,10 @@ public class TimeSelectDialog extends Dialog {
                 onTimeChangedListener.onTimeChanged(timePicker, hour, minute);
             }
         });
+        Calendar instance = Calendar.getInstance();
+        hour = instance.get(Calendar.HOUR_OF_DAY);
+        minute = instance.get(Calendar.MINUTE);
+
     }
 
 
