@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
-import com.waterfairy.dialog.ClockDialog;
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.adapter.ClockAdapter;
 import com.waterfairy.reminder.database.ClockDB;
 import com.waterfairy.reminder.database.greendao.ClockDBDao;
+import com.waterfairy.reminder.dialog.ClockDialog;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
 
@@ -25,7 +25,6 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     private ClockDBDao mClockDBDao;
     private List<ClockDB> mDataList;
     private RecyclerView mRecyclerView;
-    private ClockDialog clockDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +90,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
         int position = (int) v.getTag();
         Log.i(TAG, "onClick: " + position);
         ClockDB clockDB = mDataList.get(position);
-        clockDialog = new ClockDialog(this, clockDB, position, this);
-        clockDialog.show();
-    }
+      }
 
     /**
      * 确认删除
@@ -110,19 +107,24 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
 //        mClockAdapter.notifyItemChanged(position, mDataList.size() - position);
     }
 
-    /**
-     * 确认添加
-     *
-     * @param time
-     * @param week
-     */
     @Override
-    public void onAdd(String time, String week) {
-        ClockDB clockDB = new ClockDB(true, ShareTool.getInstance().getAccount(), time, week);
-        mClockDBDao.insert(clockDB);
-        mDataList.add(clockDB);
-        mClockAdapter.notifyItemInserted(mDataList.size() - 1);
+    public void onAdd(ClockDB clockDB) {
+
     }
+
+//    /**
+//     * 确认添加
+//     *
+//     * @param time
+//     * @param week
+//     */
+//    @Override
+//    public void onAdd(String time, String week) {
+//        ClockDB clockDB = new ClockDB(true, ShareTool.getInstance().getAccount(), time, week);
+//        mClockDBDao.insert(clockDB);
+//        mDataList.add(clockDB);
+//        mClockAdapter.notifyItemInserted(mDataList.size() - 1);
+//    }
 
     /**
      * 确认修改
