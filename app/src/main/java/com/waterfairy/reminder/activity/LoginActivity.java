@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 .list();
         if (list != null && list.size() > 0) {
             if (TextUtils.equals(password, list.get(0).getPassword())) {
-                startActivity(new Intent(this, HomeActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
             } else {
                 ToastUtils.show("密码不正确");
