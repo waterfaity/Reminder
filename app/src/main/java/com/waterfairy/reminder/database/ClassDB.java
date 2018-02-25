@@ -1,5 +1,9 @@
 package com.waterfairy.reminder.database;
 
+import android.os.UserManager;
+
+import com.waterfairy.reminder.utils.ShareTool;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -15,16 +19,18 @@ import org.greenrobot.greendao.annotation.Generated;
 public class ClassDB {
     @Id
     private Long id;
+    private String account;
     private int week;//星期，0，1，2，3，4，5，6
     private int time;//上午，下午，晚上，0，1，2
     private int level;//第一节课，0，1，2，3
     private String className;//课程
     private long changTime;
 
-    @Generated(hash = 1848134269)
-    public ClassDB(Long id, int week, int time, int level, String className,
+    @Generated(hash = 895931308)
+    public ClassDB(Long id, String account, int week, int time, int level, String className,
                    long changTime) {
         this.id = id;
+        this.account = account;
         this.week = week;
         this.time = time;
         this.level = level;
@@ -37,12 +43,23 @@ public class ClassDB {
     }
 
     public ClassDB(long week, long time, long level, String className, long changTime) {
+        this.account = ShareTool.getInstance().getAccount();
         this.week = (int) week;
         this.time = (int) time;
         this.level = (int) level;
         this.className = className;
         this.changTime = changTime;
     }
+
+    public ClassDB(String account, long week, long time, long level, String className, long changTime) {
+        this.account = account;
+        this.week = (int) week;
+        this.time = (int) time;
+        this.level = (int) level;
+        this.className = className;
+        this.changTime = changTime;
+    }
+
 
     public Long getId() {
         return this.id;
@@ -138,5 +155,13 @@ public class ClassDB {
                 return "周日";
         }
         return "";
+    }
+
+    public String getAccount() {
+        return this.account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

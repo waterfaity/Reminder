@@ -27,6 +27,7 @@ public class ClockAdapter extends RecyclerView.Adapter<ClockAdapter.ViewHolder> 
     List<ClockDB> mData;
     private View.OnClickListener onClickListener;
     private CompoundButton.OnCheckedChangeListener checkedChangeListener;
+    private OnItemClickListener onItemClickListener;
 
     public ClockAdapter(Context context, List<ClockDB> mData) {
         this.context = context;
@@ -48,7 +49,24 @@ public class ClockAdapter extends RecyclerView.Adapter<ClockAdapter.ViewHolder> 
         holder.mCheckBox.setTag(position);
         holder.mCheckBox.setOnCheckedChangeListener(checkedChangeListener);
         holder.mRootView.setTag(position);
-        holder.mRootView.setOnClickListener(onClickListener);
+        holder.mRootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = 0;
+                ClockDB clockDBClick = mData.get(pos = (Integer) v.getTag());
+                if (onItemClickListener != null) onItemClickListener.onItemClick(pos, clockDBClick);
+            }
+        });
+        holder.mRootView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int pos = 0;
+                ClockDB clockDBClick = mData.get(pos = (Integer) v.getTag());
+                if (onItemClickListener != null)
+                    onItemClickListener.onItemDeleteClick(pos, clockDBClick);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -78,5 +96,15 @@ public class ClockAdapter extends RecyclerView.Adapter<ClockAdapter.ViewHolder> 
 
     public void setOnClickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int pos, ClockDB clockDB);
+
+        void onItemDeleteClick(int pos, ClockDB clockDB);
     }
 }

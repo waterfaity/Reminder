@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBgDialog"
+        android:background="@color/colorActionBar"
         android:clickable="true"
         android:padding="20dp">
 

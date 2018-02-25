@@ -11,6 +11,7 @@ import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.greendao.UserDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.manger.DataInitManger;
+import com.waterfairy.reminder.service.ClockService;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.PermissionUtils;
 
@@ -27,6 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         //检查权限(android 5.0  )
         requestPermission();
+        startService(new Intent(this, ClockService.class));
     }
 
     private void requestPermission() {
@@ -41,11 +43,11 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-//                if (!ShareTool.getInstance().isLogin()) {
+                if (!ShareTool.getInstance().isLogin()) {
                     startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-//                } else {
-//                    startActivity(new Intent(WelcomeActivity.this, ClockActivity.class));
-//                }
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+                }
                 finish();
             }
         }.sendEmptyMessageDelayed(0, 2000);

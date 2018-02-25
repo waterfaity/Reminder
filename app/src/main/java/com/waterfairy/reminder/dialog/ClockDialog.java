@@ -110,7 +110,6 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
                 if (onClockHandleListener != null) {
                     dismiss();
                     String week = getWeek();
-
                     if (mClockDB == null) {//添加
                         ClockDB clockDB = new ClockDB()
                                 .setTime(mTime.getText().toString())

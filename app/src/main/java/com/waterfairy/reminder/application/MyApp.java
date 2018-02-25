@@ -4,6 +4,7 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.waterfairy.reminder.database.greendao.DaoMaster;
+import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.ToastUtils;
 

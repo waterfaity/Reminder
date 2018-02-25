@@ -14,6 +14,7 @@ import com.waterfairy.reminder.adapter.MemorandumAdapter;
 import com.waterfairy.reminder.database.MemorandumDB;
 import com.waterfairy.reminder.database.greendao.MemorandumDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
+import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
 
     private void showData() {
         List<MemorandumDB> memorandumDBS =
-                memorandumDBDao.queryBuilder().orderAsc(MemorandumDBDao.Properties.Time).list();
+                memorandumDBDao.queryBuilder().where(MemorandumDBDao.Properties.Account.eq(ShareTool.getInstance().getAccount())).orderAsc(MemorandumDBDao.Properties.Time).list();
         mRecyclerView.setAdapter(new MemorandumAdapter(this, memorandumDBS).setOnItemClickListener(this).setOnItemLongClickListener(this));
     }
 

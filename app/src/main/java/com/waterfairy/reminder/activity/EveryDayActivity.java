@@ -17,6 +17,7 @@ import com.waterfairy.reminder.database.EveryDayDB;
 import com.waterfairy.reminder.database.greendao.EveryDayDBDao;
 import com.waterfairy.reminder.database.greendao.MemorandumDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
+import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class EveryDayActivity extends AppCompatActivity implements EveryDayAdapt
 
     private void showData() {
         List<EveryDayDB> memorandumDBS =
-                everyDayDBDao.queryBuilder().orderAsc(EveryDayDBDao.Properties.Time).list();
+                everyDayDBDao.queryBuilder().where(EveryDayDBDao.Properties.Account.eq(ShareTool.getInstance().getAccount())).orderAsc(EveryDayDBDao.Properties.Time).list();
         mRecyclerView.setAdapter(new EveryDayAdapter(this, memorandumDBS).setOnItemClickListener(this).setOnItemLongClickListener(this));
     }
 

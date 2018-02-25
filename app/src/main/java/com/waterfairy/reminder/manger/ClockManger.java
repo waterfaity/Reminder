@@ -1,17 +1,16 @@
 package com.waterfairy.reminder.manger;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.waterfairy.reminder.application.MyApp;
-import com.waterfairy.reminder.broadcast.ClockBroadcast;
 import com.waterfairy.reminder.database.ClockDB;
 import com.waterfairy.reminder.database.greendao.ClockDBDao;
+import com.waterfairy.reminder.service.ClockService;
 import com.waterfairy.reminder.utils.ShareTool;
+import com.waterfairy.reminder.utils.TimeUtils;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -28,10 +27,12 @@ public class ClockManger {
     private static final String TAG = "clockManger";
     private long ONE_DAY = 24 * 60 * 60 * 1000;
     private static ClockManger mClockManger;
-    private AlarmManager mAlarmManager;
+    //    private AlarmManager mAlarmManager;
     private Context mContext;
     private HashMap<String, ClockDB> mClockDBHashMap;
-
+    private ClockDBDao clockDBDao;
+    private List<ClockDB> clockDBS;
+    private ClockDB currentClock;
 
     private ClockManger() {
 
@@ -42,73 +43,72 @@ public class ClockManger {
         return mClockManger;
     }
 
-    public void initClock() {
+    public ClockManger init() {
         mContext = MyApp.getApp().getApplicationContext();
-        initAlarmManger();
-        ClockDBDao clockDBDao = DataBaseManger.getInstance().getDaoSession().getClockDBDao();
-        //获取该用户下的 clock
-        String account = null;
-        if (!TextUtils.isEmpty(account = ShareTool.getInstance().getAccount())) {
-            List<ClockDB> list = clockDBDao.queryBuilder()
+        clockDBDao = DataBaseManger.getInstance().getDaoSession().getClockDBDao();
+        return this;
+    }
+
+    public void initClock() {
+        AudioManger.getInstance().stopAudio();
+        String account = ShareTool.getInstance().getAccount();
+        handler.removeMessages(0);
+        if (!TextUtils.isEmpty(account) && ShareTool.getInstance().isLogin()) {
+            clockDBS = clockDBDao.queryBuilder()
                     .where(ClockDBDao.Properties.Account.eq(account))
                     .list();
-            if (list != null && list.size() > 0) {
-                for (int i = 0; i < list.size(); i++) {
-                    ClockDB clockDB = list.get(i);
-                    if (clockDB.isOpen()) {
-                        if (clockDB.isOneTime()) {
-                            //启动 一次性闹钟
-                            if (System.currentTimeMillis() >= clockDB.getFirstTime()) {
-                                //超过时间
-                                clockDB.setOpen(false);
-                                clockDB.setUpdateTime(System.currentTimeMillis());
-                                clockDBDao.update(clockDB);
-                            } else {
-                                setClock(clockDB);
-                            }
-                        } else {
-                            //循环闹钟
-
-                        }
-                    } else {
-
-                    }
-
-                }
+            if (clockDBS != null && clockDBS.size() > 0) {
+                handler.sendEmptyMessageDelayed(0, 5000);
             }
         }
     }
 
-    private void initAlarmManger() {
-        mAlarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+    android.os.Handler handler = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Log.i(TAG, "handleMessage: ");
+            removeMessages(0);
+            boolean login = ShareTool.getInstance().isLogin();
+            if (login) {
+                setClock();
+                sendEmptyMessageDelayed(0, 5000);
+            }
+        }
+    };
+
+    private void setClock() {
+        //获取该用户下的 clock
+        if (clockDBS != null && clockDBS.size() > 0) {
+            boolean hasClock = false;
+            long currentTimeMillis = System.currentTimeMillis();
+            String currentTimeStr = TimeUtils.format(currentTimeMillis, "HH:mm");
+            for (int i = 0; i < clockDBS.size(); i++) {
+                ClockDB clockDB = clockDBS.get(i);
+                String clockDBTime = clockDB.getTime();
+                if (clockDB.isOpen() && TextUtils.equals(clockDBTime, currentTimeStr)) {
+                    if (currentClock == null || !TextUtils.equals(currentClock.getTime(), currentTimeStr)) {
+                        hasClock = true;
+                        currentClock = clockDB;
+                    }
+                    break;
+                }
+            }
+            if (hasClock) {
+                startClock();
+            }
+        }
     }
 
-    /**
-     * 启动闹钟 一次性
-     *
-     * @param clockDB
-     */
-
-    public void setClock(ClockDB clockDB) {
-        Intent intent = new Intent(mContext, ClockBroadcast.class);
-        intent.putExtra("tag", clockDB.getTag());
-        intent.setAction(ClockBroadcast.ACTION_CLOCK_START);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, ClockBroadcast.REQUEST_ONE, intent, PendingIntent.FLAG_ONE_SHOT);
-        long triggerTime = clockDB.getFirstTime();
-        mAlarmManager.set(
-                AlarmManager.RTC_WAKEUP,
-                triggerTime,
-                pendingIntent);
-        Log.i(TAG, "setClock: " + clockDB.getTime() + "---" + getTime(triggerTime));
+    private void startClock() {
+        handler.removeMessages(0);
+        Log.i(TAG, "startAudio: ");
+        if (currentClock != null) {
+            AudioManger.getInstance().startAudio();
+            ClockService.getInstance().showNotification(MyApp.getApp().getApplicationContext(), currentClock.getTime());
+        }
     }
 
-    public void setRepeatClock(ClockDB clockDB) {
-    }
-
-
-    public void stopClock() {
-
-    }
 
     /**
      * 即将提醒的时间  最小单位  分钟

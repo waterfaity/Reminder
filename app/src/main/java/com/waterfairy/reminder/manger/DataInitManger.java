@@ -8,6 +8,8 @@ package com.waterfairy.reminder.manger;
  */
 
 public class DataInitManger {
+    private static final String TAG = "DataInitManger";
+
     private static DataInitManger dataInitManger;
 
     private DataInitManger() {
@@ -24,8 +26,8 @@ public class DataInitManger {
         //数据库
         DataBaseManger.getInstance().initDataBase();
         //闹钟
-        ClockManger.getInstance().initClock();
-
+        ClockManger.getInstance().init().initClock();
+        //  audio
+        AudioManger.getInstance().init();
     }
-
 }

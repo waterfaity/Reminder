@@ -8,16 +8,32 @@
     android:orientation="vertical"
     tools:context="com.waterfairy.reminder.activity.HomeActivity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorActionBar"
-        android:gravity="center"
-        android:onClick="memorandum"
-        android:text="备忘录"
-        android:textColor="@color/colorWhite"
-        android:textSize="16dp" />
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorActionBar"
+            android:gravity="center"
+            android:onClick="memorandum"
+            android:text="备忘录"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:onClick="quit"
+            android:padding="10dp"
+            android:src="@mipmap/setting" />
+    </RelativeLayout>
+
 
     <TextView
         android:layout_width="match_parent"
