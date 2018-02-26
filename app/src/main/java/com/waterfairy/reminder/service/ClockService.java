@@ -59,7 +59,7 @@ public class ClockService extends Service {
             Log.i(TAG, "service: " + intent.getAction());
             if (TextUtils.equals(intent.getAction(), ACTION_CLOCK_START)) {
                 NotificationUtils notificationUtils = new NotificationUtils(this);
-                Notification.Builder notificationBuilder = notificationUtils.getNotificationBuilder(R.mipmap.ic_launcher_noti, "闹钟", intent.getStringExtra("time"));
+                Notification.Builder notificationBuilder = notificationUtils.getNotificationBuilder(R.mipmap.clock_lanucher, "闹钟", intent.getStringExtra("time"));
                 Intent intentStop = new Intent(this, ClockService.class);
                 intentStop.setAction(ACTION_CLOCK_STOP);
                 PendingIntent closeIntent = PendingIntent.getService(this, 1, intentStop, 0);

@@ -22,9 +22,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //junit 测试
-    implementation 'com.android.support:design:26.1.0'
-    testImplementation 'junit:junit:4.12'
     //基础依赖
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -44,7 +41,7 @@ dependencies {
     compile 'com.github.codbking:PickTime:v1.0.1'
 }
 greendao {
-    schemaVersion 5
+    schemaVersion 1
     daoPackage 'com.waterfairy.reminder.database.greendao'
     targetGenDir 'src/main/java'
 }
