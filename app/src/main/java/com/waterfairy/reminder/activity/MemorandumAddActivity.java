@@ -19,6 +19,9 @@ import com.waterfairy.utils.ToastUtils;
 
 import java.util.Date;
 
+/**
+ * 备忘录 添加页面
+ */
 public class MemorandumAddActivity extends AppCompatActivity implements OnSureLisener {
     private TextView mTime;
     private EditText mContent;

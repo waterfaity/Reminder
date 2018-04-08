@@ -1,13 +1,12 @@
 package com.waterfairy.reminder.activity;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
@@ -66,7 +65,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
      */
     public void addClock(View view) {
         new ClockDialog(this, null, 0, this).show();
-     }
+    }
 
     /**
      * 复选按钮(闹钟开关)
@@ -93,6 +92,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     }
 
     /**
+     * 删除闹钟主要代码
      * 确认删除
      *
      * @param clockDB
@@ -106,6 +106,11 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
         ClockManger.getInstance().initClock();
     }
 
+    /**
+     * 添加闹钟主要代码
+     *
+     * @param clockDB
+     */
     @Override
     public void onAdd(ClockDB clockDB) {
         mClockDBDao.insert(clockDB);
@@ -115,7 +120,7 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
     }
 
     /**
-     * 确认修改
+     * 修改闹钟主要代码
      *
      * @param clockDB
      * @param position
@@ -127,15 +132,32 @@ public class ClockActivity extends AppCompatActivity implements CompoundButton.O
         ClockManger.getInstance().initClock();
     }
 
+    /**
+     * 返回 关闭页面
+     *
+     * @param view
+     */
     public void back(View view) {
         finish();
     }
 
+    /**
+     * 点击展示 修改闹钟 弹窗
+     *
+     * @param pos
+     * @param clockDB
+     */
     @Override
     public void onItemClick(int pos, ClockDB clockDB) {
         new ClockDialog(this, clockDB, pos, this).show();
     }
 
+    /**
+     * 删除闹钟  弹框
+     *
+     * @param pos
+     * @param clockDB
+     */
     @Override
     public void onItemDeleteClick(final int pos, final ClockDB clockDB) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

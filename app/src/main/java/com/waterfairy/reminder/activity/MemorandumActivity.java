@@ -58,6 +58,11 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
         finish();
     }
 
+    /**
+     * 调备忘录添加页面
+     *
+     * @param view
+     */
     public void add(View view) {
         startActivityForResult(new Intent(this, MemorandumAddActivity.class), 1);
     }
@@ -75,6 +80,13 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
 
     }
 
+    /**
+     * 备忘录删除 主要代码
+     * dialog  -> 确定 ->删除
+     *
+     * @param db
+     * @param pos
+     */
     @Override
     public void onItemLongClick(final MemorandumDB db, final int pos) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

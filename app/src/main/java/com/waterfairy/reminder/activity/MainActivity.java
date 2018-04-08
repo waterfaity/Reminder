@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.waterfairy.reminder.R;
 
+/**
+ * 暂无功能
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

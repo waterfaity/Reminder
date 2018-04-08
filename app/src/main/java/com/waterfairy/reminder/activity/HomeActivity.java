@@ -62,6 +62,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, ClassListActivity.class));
     }
 
+    /**
+     * 退出帐号
+     *
+     * @param view
+     */
     public void quit(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("提示");

@@ -12,18 +12,22 @@ import android.widget.TextView;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.adapter.EveryDayAdapter;
-import com.waterfairy.reminder.adapter.MemorandumAdapter;
 import com.waterfairy.reminder.database.EveryDayDB;
 import com.waterfairy.reminder.database.greendao.EveryDayDBDao;
-import com.waterfairy.reminder.database.greendao.MemorandumDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.List;
 
+/**
+ * 每天  页面
+ */
+
 public class EveryDayActivity extends AppCompatActivity implements EveryDayAdapter.OnItemClickListener, EveryDayAdapter.OnItemLongClickListener {
 
+    //列表 控件
     private RecyclerView mRecyclerView;
+    //每天 数据库
     private EveryDayDBDao everyDayDBDao;
 
 
@@ -38,13 +42,19 @@ public class EveryDayActivity extends AppCompatActivity implements EveryDayAdapt
 
     private void initData() {
         everyDayDBDao = DataBaseManger.getInstance().getDaoSession().getEveryDayDBDao();
+        //展示数据
         showData();
 
     }
 
+    /**
+     * 展示数据
+     */
     private void showData() {
+        //获取数据
         List<EveryDayDB> memorandumDBS =
                 everyDayDBDao.queryBuilder().where(EveryDayDBDao.Properties.Account.eq(ShareTool.getInstance().getAccount())).orderAsc(EveryDayDBDao.Properties.Time).list();
+        //展示数据
         mRecyclerView.setAdapter(new EveryDayAdapter(this, memorandumDBS).setOnItemClickListener(this).setOnItemLongClickListener(this));
     }
 
@@ -57,18 +67,36 @@ public class EveryDayActivity extends AppCompatActivity implements EveryDayAdapt
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * 返回关闭页面
+     *
+     * @param view
+     */
     public void back(View view) {
         finish();
     }
 
+    /**
+     * 添转 添加 页面
+     *
+     * @param view
+     */
     public void add(View view) {
         startActivityForResult(new Intent(this, EveryDayAddActivity.class), 1);
     }
 
+    /**
+     * 添加页面(本页面打开的页面)返回的数据
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
+            //返回成功标记   说明添加成功 刷新数据
             showData();
         }
     }
@@ -78,6 +106,12 @@ public class EveryDayActivity extends AppCompatActivity implements EveryDayAdapt
 
     }
 
+    /**
+     * 删除每天  主要代码
+     *
+     * @param db
+     * @param pos
+     */
     @Override
     public void onItemLongClick(final EveryDayDB db, final int pos) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

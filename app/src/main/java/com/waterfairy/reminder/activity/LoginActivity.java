@@ -1,29 +1,26 @@
 package com.waterfairy.reminder.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.UserDB;
-import com.waterfairy.reminder.database.greendao.DaoMaster;
-import com.waterfairy.reminder.database.greendao.DaoSession;
 import com.waterfairy.reminder.database.greendao.UserDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.ToastUtils;
 
-import org.greenrobot.greendao.query.QueryBuilder;
-import org.greenrobot.greendao.query.WhereCondition;
-
 import java.util.List;
 
+/**
+ * 登录页面
+ */
 public class LoginActivity extends AppCompatActivity {
-    private UserDBDao userDBDao;
+    private UserDBDao userDBDao;//用户数据库
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +43,13 @@ public class LoginActivity extends AppCompatActivity {
         userDBDao = DataBaseManger.getInstance().getDaoSession().getUserDBDao();
     }
 
+    /**
+     * 登录主要代码
+     * 使用本地登录 用户数据在手机数据库中存储 (注册后保存到本地数据库)
+     * 匹配账号和密码 进行登录
+     *
+     * @param view
+     */
     public void login(View view) {
         String account = ((TextView) findViewById(R.id.account)).getText().toString();
         String password = ((TextView) findViewById(R.id.password)).getText().toString();
@@ -79,12 +83,23 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 记录 账号和密码  方便下次登录
+     *
+     * @param account
+     * @param password
+     */
     private void save(String account, String password) {
         ShareTool.getInstance().saveLogin(true);
         ShareTool.getInstance().saveAccount(account);
         ShareTool.getInstance().savePassword(password);
     }
 
+    /**
+     * 调注册页面
+     *
+     * @param view
+     */
     public void register(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
     }

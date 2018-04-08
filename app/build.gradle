@@ -3,18 +3,29 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
+    //编译版本
     compileSdkVersion 26
+    //app 配置
     defaultConfig {
+        //包名
         applicationId "com.waterfairy.reminder"
+        //安装手机的最小版本
         minSdkVersion 16
+        //安装手机的目标版本
         targetSdkVersion 26
+        //版本 代号
         versionCode 1
+        //版本 名字
         versionName "1.0"
+        //测试使用
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    //编译配置
     buildTypes {
         release {
+            //混淆 开启  :  否
             minifyEnabled false
+            //混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -26,8 +37,10 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    //android  界面设计库
+    compile 'com.android.support:design:26.1.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    //加上以下两行,引入greenDao 3.0
+    //加上以下两行,引入greenDao 3.0  数据库框架
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'org.greenrobot:greendao-generator:3.2.0'
     //greenDao 加密
@@ -40,8 +53,12 @@ dependencies {
     //时间选择
     compile 'com.github.codbking:PickTime:v1.0.1'
 }
+//greenDao 数据库配置
 greendao {
     schemaVersion 1
+    //数据版本
+    schemaVersion 5
     daoPackage 'com.waterfairy.reminder.database.greendao'
+    //生成到主目录 src/main/java
     targetGenDir 'src/main/java'
 }

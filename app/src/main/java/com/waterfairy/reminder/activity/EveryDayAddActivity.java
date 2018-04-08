@@ -9,27 +9,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.codbking.widget.DatePickDialog;
-import com.codbking.widget.OnSureLisener;
-import com.codbking.widget.bean.DateType;
 import com.waterfairy.reminder.R;
-import com.waterfairy.reminder.adapter.EveryDayAdapter;
 import com.waterfairy.reminder.database.EveryDayDB;
-import com.waterfairy.reminder.database.MemorandumDB;
 import com.waterfairy.reminder.database.greendao.EveryDayDBDao;
-import com.waterfairy.reminder.database.greendao.MemorandumDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
-import com.waterfairy.reminder.utils.TimeUtils;
 import com.waterfairy.utils.ToastUtils;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 每天 添加页面
+ */
 public class EveryDayAddActivity extends AppCompatActivity {
-    private TextView mTime;
-    private EditText mContent;
-    private Date date;
-    private EveryDayDBDao memorandumDBDao;
+    private TextView mTime;//时间
+    private EditText mContent;//内容
+    private EveryDayDBDao memorandumDBDao;//每天数据库
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +53,11 @@ public class EveryDayAddActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * 保存主要代码1
+     *
+     * @param view
+     */
     public void save(View view) {
         //保存
         final String s = mContent.getText().toString();
@@ -88,6 +88,9 @@ public class EveryDayAddActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 保存主要代码2
+     */
     private void save(String s, long time) {
         memorandumDBDao.save(new EveryDayDB(s, time, new Date().getTime()));
         setResult(RESULT_OK);
