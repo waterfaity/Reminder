@@ -15,7 +15,7 @@ import java.io.IOException;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2018/2/25
- * des  :
+ * des  :音频播放管理器
  */
 
 public class AudioManger {
@@ -31,17 +31,26 @@ public class AudioManger {
         return AUDIO_MANGER;
     }
 
+    /**
+     * 开始播放
+     */
     public void startAudio() {
         if (mediaPlayer == null) initMediaPlayer();
         mediaPlayer.start();
     }
 
+    /**
+     * 停止
+     */
     public void stopAudio() {
         if (mediaPlayer != null) {
             mediaPlayer.pause();
         }
     }
 
+    /**
+     * 初始化配置播放器
+     */
     private void initMediaPlayer() {
         mediaPlayer = new MediaPlayer();
         try {
@@ -78,6 +87,9 @@ public class AudioManger {
         initFile();
     }
 
+    /**
+     * 闹钟音频文件复制到内存卡
+     */
     private void initFile() {
         audioPath = FileUtils.getAPPPath(MyApp.getApp().getApplicationContext(), "audio") + "alarm1.mp3";
         if (!new File(audioPath).exists()) {

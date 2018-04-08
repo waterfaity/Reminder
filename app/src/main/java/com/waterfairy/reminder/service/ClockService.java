@@ -19,7 +19,7 @@ import com.waterfairy.utils.NotificationUtils;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2018/2/26
- * des  :
+ * des  : 闹钟服务
  */
 
 public class ClockService extends Service {
@@ -46,6 +46,12 @@ public class ClockService extends Service {
         clockService = this;
     }
 
+    /**
+     * 状态栏 提示闹钟
+     *
+     * @param context
+     * @param time
+     */
     public void showNotification(Context context, String time) {
         Intent intent = new Intent(context, ClockService.class);
         intent.setAction(ACTION_CLOCK_START);
@@ -58,6 +64,7 @@ public class ClockService extends Service {
         if (intent != null) {
             Log.i(TAG, "service: " + intent.getAction());
             if (TextUtils.equals(intent.getAction(), ACTION_CLOCK_START)) {
+                //闹钟启动
                 NotificationUtils notificationUtils = new NotificationUtils(this);
                 Notification.Builder notificationBuilder = notificationUtils.getNotificationBuilder(R.mipmap.clock_lanucher, "闹钟", intent.getStringExtra("time"));
                 Intent intentStop = new Intent(this, ClockService.class);
@@ -67,6 +74,7 @@ public class ClockService extends Service {
                 notificationBuilder.setDeleteIntent(closeIntent);
                 notificationUtils.sendNotification(notificationBuilder.build());
             } else {
+                //关闭
                 AudioManger.getInstance().stopAudio();
                 ClockManger.getInstance().initClock();
             }
@@ -76,14 +84,4 @@ public class ClockService extends Service {
 
     }
 
-    public void stopClick() {
-
-    }
-
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy: ");
-    }
 }

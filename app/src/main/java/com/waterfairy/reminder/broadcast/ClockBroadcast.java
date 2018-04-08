@@ -11,7 +11,7 @@ import com.waterfairy.utils.ToastUtils;
  * @author water_fairy
  * @email 995637517@qq.com
  * @date 2017/11/28
- * @Description:
+ * @Description: 闹钟广播  未用到
  */
 
 public class ClockBroadcast extends BroadcastReceiver {

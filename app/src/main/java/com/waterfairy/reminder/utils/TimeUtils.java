@@ -7,7 +7,7 @@ import java.util.Date;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2018/2/23
- * des  :
+ * des  : 时间格式化工具
  */
 
 public class TimeUtils {

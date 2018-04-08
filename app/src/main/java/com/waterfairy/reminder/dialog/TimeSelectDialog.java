@@ -34,6 +34,7 @@ public class TimeSelectDialog extends Dialog {
         findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 dismiss();
             }
         });

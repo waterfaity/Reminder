@@ -28,15 +28,22 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         //检查权限(android 5.0  )
         requestPermission();
+        //开启闹钟服务
         startService(new Intent(this, ClockService.class));
     }
 
+    //请求内存卡读写权限(android 5.0  )
     private void requestPermission() {
         if (PermissionUtils.requestPermission(this, PermissionUtils.REQUEST_STORAGE)) {
             initData();
         }
     }
 
+    /**
+     * 处理 欢迎页 将要跳转的页面
+     * 已经登录  ->主页
+     * 未登录   ->登录页
+     */
     private void initData() {
         DataInitManger.getInstance().init();
         new Handler() {
@@ -53,12 +60,21 @@ public class WelcomeActivity extends AppCompatActivity {
         }.sendEmptyMessageDelayed(0, 2000);
     }
 
+    /**
+     * 请求权限返回的结果
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (PermissionUtils.onRequestPermissionsResultForSDCard(permissions, grantResults)) {
+            //权限获取成功
             initData();
         } else {
+            //权限不成功  在此请求  如果被用户拒绝 并 设置不在提示  ,该代码将不起作用
             requestPermission();
         }
     }

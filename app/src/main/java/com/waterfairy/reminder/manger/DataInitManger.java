@@ -4,7 +4,7 @@ package com.waterfairy.reminder.manger;
  * @author water_fairy
  * @email 995637517@qq.com
  * @date 2017/11/28
- * @Description:
+ * @Description: 用于 刚启动时 数据的初始化
  */
 
 public class DataInitManger {
@@ -27,7 +27,7 @@ public class DataInitManger {
         DataBaseManger.getInstance().initDataBase();
         //闹钟
         ClockManger.getInstance().init().initClock();
-        //  audio
+        //  audio  - 复制音频到内存卡
         AudioManger.getInstance().init();
     }
 }

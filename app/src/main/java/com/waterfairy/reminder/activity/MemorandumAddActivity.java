@@ -55,8 +55,11 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
         finish();
     }
 
+    /**
+     * 保存备忘录主要页面
+     */
     public void save(View view) {
-        //保存
+
         String s = mContent.getText().toString();
         if (TextUtils.isEmpty(s)) {
             ToastUtils.show("请输入内容");
@@ -67,6 +70,11 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
         finish();
     }
 
+    /**
+     * 设置时间显示弹窗
+     *
+     * @param view
+     */
     public void setTime(View view) {
         //时间选择
         DatePickDialog dialog = new DatePickDialog(this);
@@ -85,6 +93,11 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
         dialog.show();
     }
 
+    /**
+     * 选择时间 显示到文本框
+     *
+     * @param date
+     */
     @Override
     public void onSure(Date date) {
         this.date = date;

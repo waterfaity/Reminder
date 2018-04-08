@@ -19,14 +19,16 @@ import java.util.List;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2018/2/23
- * des  :
+ * des  :课程适配器
+ * 注:
+ * ----适配器 用户处理数据列表展示的逻辑  用于显示
  */
 
 public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> {
     private Context context;
-    private List<ClassDB> everyDayDBS;
-    private OnItemClickListener onItemClickListener;
-    private OnItemLongClickListener onItemLongClickListener;
+    private List<ClassDB> everyDayDBS;//课程数据集合
+    private OnItemClickListener onItemClickListener;//点击课程监听
+    private OnItemLongClickListener onItemLongClickListener;//长按课程监听
 
     public ClassAdapter(Context context, List<ClassDB> everyDayDBS) {
         this.context = context;

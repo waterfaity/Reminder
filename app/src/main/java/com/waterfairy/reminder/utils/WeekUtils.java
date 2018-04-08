@@ -6,7 +6,7 @@ import android.text.TextUtils;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :
+ * des  :星期转化工具   0->周日
  */
 
 public class WeekUtils {

@@ -4,7 +4,7 @@ package com.waterfairy.reminder.bean;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/12/7
- * des  :
+ * des  : 用户信息类
  */
 
 public class UserBean {

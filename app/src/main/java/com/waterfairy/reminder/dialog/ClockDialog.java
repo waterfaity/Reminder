@@ -25,7 +25,7 @@ import java.util.List;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :闹钟设置 (添加/修改/删除)
+ * des  :闹钟设置 (添加/修改/删除) 弹窗
  */
 
 public class ClockDialog extends Dialog implements View.OnClickListener, TimePicker.OnTimeChangedListener {
@@ -117,7 +117,7 @@ public class ClockDialog extends Dialog implements View.OnClickListener, TimePic
                                 .setOneTime(TextUtils.isEmpty(week))
                                 .setOpen(true)
                                 .setAccount(ShareTool.getInstance().getAccount())
-                                .setCreateTime(System.currentTimeMillis()) ;
+                                .setCreateTime(System.currentTimeMillis());
                         onClockHandleListener.onAdd(clockDB);
                     } else { //修改
                         onClockHandleListener.onRevise(

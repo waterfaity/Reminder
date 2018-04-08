@@ -9,7 +9,7 @@ import com.waterfairy.reminder.application.MyApp;
  * user : water_fairy
  * email:995637517@qq.com
  * date :2017/11/25
- * des  :
+ * des  : 用于保存 密码 账号 登录状态
  */
 
 public class ShareTool {
@@ -63,6 +63,7 @@ public class ShareTool {
     public String getAccount() {
         return sharedPreferences.getString(ACCOUNT, "");
     }
+
     public String getPassword() {
         return sharedPreferences.getString(PASSWORD, "");
     }

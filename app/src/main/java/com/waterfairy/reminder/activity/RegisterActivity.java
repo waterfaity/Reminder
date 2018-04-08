@@ -31,6 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
         userDBDao = DataBaseManger.getInstance().getDaoSession().getUserDBDao();
     }
 
+    /**
+     * 注册主要代码
+     *
+     * @param view
+     */
     public void register(View view) {
 
         String account = ((TextView) findViewById(R.id.account)).getText().toString();

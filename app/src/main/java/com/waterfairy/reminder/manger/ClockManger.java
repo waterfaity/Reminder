@@ -63,6 +63,9 @@ public class ClockManger {
         }
     }
 
+    /**
+     * 闹钟设置主要代码1
+     */
     android.os.Handler handler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -71,12 +74,16 @@ public class ClockManger {
             removeMessages(0);
             boolean login = ShareTool.getInstance().isLogin();
             if (login) {
+                //登录的时候才会启动闹钟
                 setClock();
-                sendEmptyMessageDelayed(0, 5000);
+                sendEmptyMessageDelayed(0, 3000);
             }
         }
     };
 
+    /**
+     * 闹钟设置主要代码2
+     */
     private void setClock() {
         //获取该用户下的 clock
         if (clockDBS != null && clockDBS.size() > 0) {
@@ -100,6 +107,9 @@ public class ClockManger {
         }
     }
 
+    /**
+     * 闹钟启动
+     */
     private void startClock() {
         handler.removeMessages(0);
         Log.i(TAG, "startAudio: ");
