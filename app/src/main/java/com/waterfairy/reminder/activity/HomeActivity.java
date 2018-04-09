@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param view
      */
     public void classList(View view) {
-        startActivity(new Intent(this, ClassListActivity.class));
+        startActivity(new Intent(this, ClassList2Activity.class));
     }
 
     /**

@@ -65,6 +65,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:name=".activity.ClassList2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
             android:name=".activity.ClassAddActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />

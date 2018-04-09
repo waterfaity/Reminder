@@ -1,7 +1,5 @@
 package com.waterfairy.reminder.database;
 
-import android.os.UserManager;
-
 import com.waterfairy.reminder.utils.ShareTool;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -24,22 +22,30 @@ public class ClassDB {
     private int time;//上午，下午，晚上，0，1，2
     private int level;//第一节课，0，1，2，3
     private String className;//课程
+    private String tag;//标记  对应课表坐标 (0_1) 开始
     private long changTime;
 
-    @Generated(hash = 895931308)
-    public ClassDB(Long id, String account, int week, int time, int level, String className,
-                   long changTime) {
+    @Generated(hash = 1243900389)
+    public ClassDB(Long id, String account, int week, int time, int level, String className, String tag,
+            long changTime) {
         this.id = id;
         this.account = account;
         this.week = week;
         this.time = time;
         this.level = level;
         this.className = className;
+        this.tag = tag;
         this.changTime = changTime;
     }
 
     @Generated(hash = 370749809)
     public ClassDB() {
+    }
+
+    public ClassDB( String className, String tag, long changTime) {
+         this.className = className;
+        this.tag = tag;
+        this.changTime = changTime;
     }
 
     public ClassDB(long week, long time, long level, String className, long changTime) {
@@ -60,6 +66,14 @@ public class ClassDB {
         this.changTime = changTime;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public ClassDB setTag(String tag) {
+        this.tag = tag;
+        return this;
+    }
 
     public Long getId() {
         return this.id;

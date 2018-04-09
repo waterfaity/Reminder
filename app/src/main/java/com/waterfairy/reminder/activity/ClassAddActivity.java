@@ -105,7 +105,7 @@ public class ClassAddActivity extends AppCompatActivity {
                 mTimeSpinnerAdapter.getItemId(mTimeSpinner.getSelectedItemPosition()),
                 mLevelSpinnerAdapter.getItemId(mLevelSpinner.getSelectedItemPosition()),
                 s, new Date().getTime()
-        ));
+        ).setTag(mWeekSpinner.getSelectedItemPosition() + "_" + (1+mTimeSpinner.getSelectedItemPosition() * 4 + (mLevelSpinner.getSelectedItemPosition()))));
         //保存成功  给上个页面一个信号 说明有新的课程保存 上个页面会去刷新
         setResult(RESULT_OK);
         //关闭页面
