@@ -35,7 +35,7 @@ public class EveryDayAdapter extends RecyclerView.Adapter<EveryDayAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_remorandum, parent, false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_calendar, parent, false));
     }
 
     @Override

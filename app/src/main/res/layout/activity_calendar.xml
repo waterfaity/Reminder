@@ -34,22 +34,27 @@
             android:textSize="17dp" />
 
         <ImageView
-            android:padding="5dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:onClick="add"
+            android:padding="5dp"
             android:src="@mipmap/plus" />
 
     </RelativeLayout>
+
 
     <CalendarView
         android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#55000000" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
