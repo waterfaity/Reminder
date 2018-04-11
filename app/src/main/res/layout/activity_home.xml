@@ -42,7 +42,7 @@
         android:background="#36a69b"
         android:gravity="center"
         android:onClick="everyday"
-        android:text="每天"
+        android:text="日历"
         android:textColor="@color/colorWhite"
         android:textSize="16dp" />
 

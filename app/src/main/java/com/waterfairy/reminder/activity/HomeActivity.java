@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param view
      */
     public void everyday(View view) {
-        startActivity(new Intent(this, EveryDayActivity.class));
+        startActivity(new Intent(this, CalendarActivity.class));
 
     }
 

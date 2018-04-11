@@ -31,7 +31,6 @@
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-
         <activity
             android:name=".activity.RegisterActivity"
             android:screenOrientation="portrait"
@@ -74,6 +73,11 @@
             android:theme="@style/NoActionBar" />
 
         <service android:name=".service.ClockService" />
+
+        <activity
+            android:name=".activity.CalendarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarDark" />
     </application>
 
 </manifest>
