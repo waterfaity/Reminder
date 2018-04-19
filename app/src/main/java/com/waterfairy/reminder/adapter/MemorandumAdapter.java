@@ -81,6 +81,7 @@ public class MemorandumAdapter extends RecyclerView.Adapter<MemorandumAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             mTime = itemView.findViewById(R.id.time);
             mContent = itemView.findViewById(R.id.content);
         }

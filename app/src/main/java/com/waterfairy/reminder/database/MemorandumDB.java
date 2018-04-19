@@ -6,6 +6,8 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+
 /**
  * user : water_fairy
  * email:995637517@qq.com
@@ -13,7 +15,8 @@ import org.greenrobot.greendao.annotation.Generated;
  * des  :
  */
 @Entity
-public class MemorandumDB {
+public class MemorandumDB implements Serializable {
+    private static final long serialVersionUID = 20180419220311L;
     @Id
     private Long id;
     private String account;
