@@ -6,7 +6,7 @@ import com.waterfairy.reminder.database.greendao.DaoSession;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2017/11/25
  * des  :数据库管理
  */

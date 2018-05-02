@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2018/2/23
  * des  :课程适配器
  * 注:

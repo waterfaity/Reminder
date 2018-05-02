@@ -1,15 +1,13 @@
 package com.waterfairy.reminder.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.UserDB;
-import com.waterfairy.reminder.database.greendao.DaoMaster;
-import com.waterfairy.reminder.database.greendao.DaoSession;
 import com.waterfairy.reminder.database.greendao.UserDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
@@ -17,6 +15,9 @@ import com.waterfairy.utils.ToastUtils;
 
 import java.util.List;
 
+/**
+ * 注册页面
+ */
 public class RegisterActivity extends AppCompatActivity {
     private UserDBDao userDBDao;
 

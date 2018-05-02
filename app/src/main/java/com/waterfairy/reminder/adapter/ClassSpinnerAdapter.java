@@ -11,11 +11,10 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.waterfairy.reminder.R;
-import com.waterfairy.reminder.activity.ClassAddActivity;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2018/2/23
  * des  :
  */

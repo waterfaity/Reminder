@@ -2,14 +2,12 @@ package com.waterfairy.reminder.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.waterfairy.reminder.R;
-import com.waterfairy.reminder.manger.AudioManger;
-import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.utils.ShareTool;
 
 public class HomeActivity extends AppCompatActivity {
@@ -59,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param view
      */
     public void classList(View view) {
-        startActivity(new Intent(this, ClassList2Activity.class));
+        startActivity(new Intent(this, ClassListActivity.class));
     }
 
     /**

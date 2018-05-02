@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.EveryDayDB;
-import com.waterfairy.reminder.database.MemorandumDB;
 import com.waterfairy.reminder.utils.TimeUtils;
 
 import java.util.Date;
@@ -17,7 +16,7 @@ import java.util.List;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2018/2/23
  * des  :
  */
@@ -41,7 +40,7 @@ public class EveryDayAdapter extends RecyclerView.Adapter<EveryDayAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         EveryDayDB memorandumDB = everyDayDBS.get(position);
-        holder.mTime.setText(TimeUtils.format(new Date(memorandumDB.getTime()),"yyyy-MM-dd"));
+        holder.mTime.setText(TimeUtils.format(new Date(memorandumDB.getTime()), "yyyy-MM-dd"));
         holder.mContent.setText(memorandumDB.getContent());
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

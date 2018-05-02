@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="12:12"
             android:textColor="@color/colorWhite"
-            android:textSize="35dp" />
+            android:textSize="35dp"/>
 
         <LinearLayout
             android:id="@+id/week_lin"
@@ -36,7 +36,7 @@
                 android:gravity="center"
                 android:text="日"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/week1"
@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:text="一"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/week2"
@@ -58,7 +58,7 @@
                 android:gravity="center"
                 android:text="二"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/week3"
@@ -69,7 +69,7 @@
                 android:gravity="center"
                 android:text="三"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/week4"
@@ -80,7 +80,7 @@
                 android:gravity="center"
                 android:text="四"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/week5"
@@ -91,7 +91,7 @@
                 android:gravity="center"
                 android:text="五"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/week6"
@@ -102,7 +102,7 @@
                 android:gravity="center"
                 android:text="六"
                 android:textColor="@color/colorWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
 
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:gravity="center"
                 android:text="取消"
                 android:textColor="@color/colorAccent"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/ensure"
@@ -131,7 +131,7 @@
                 android:gravity="center"
                 android:text="确定"
                 android:textColor="@color/colorAccent"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
         </LinearLayout>
 
         <ImageView
@@ -140,6 +140,6 @@
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:padding="10dp"
-            android:src="@mipmap/delete" />
+            android:src="@mipmap/delete"/>
     </RelativeLayout>
 </RelativeLayout>

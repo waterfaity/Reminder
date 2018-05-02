@@ -2,7 +2,7 @@ package com.waterfairy.reminder.bean;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2017/12/7
  * des  : 用户信息类
  */

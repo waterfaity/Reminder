@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.utils.ToastUtils;
@@ -16,7 +15,7 @@ import java.util.Calendar;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2017/11/25
  * des  :选择时间
  */

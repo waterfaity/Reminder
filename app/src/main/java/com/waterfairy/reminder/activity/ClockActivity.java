@@ -21,6 +21,9 @@ import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.List;
 
+/**
+ * 闹钟
+ */
 public class ClockActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, ClockDialog.OnClockHandleListener, ClockAdapter.OnItemClickListener {
     private static final String TAG = "clock1";
     private ClockAdapter mClockAdapter;

@@ -7,7 +7,7 @@ import com.waterfairy.reminder.application.MyApp;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2017/11/25
  * des  : 用于保存 密码 账号 登录状态
  */

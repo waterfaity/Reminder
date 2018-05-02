@@ -3,12 +3,12 @@ package com.waterfairy.reminder.database;
 import com.waterfairy.reminder.utils.ShareTool;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2018/2/23
  * des  :
  */
@@ -27,7 +27,7 @@ public class ClassDB {
 
     @Generated(hash = 1243900389)
     public ClassDB(Long id, String account, int week, int time, int level, String className, String tag,
-            long changTime) {
+                   long changTime) {
         this.id = id;
         this.account = account;
         this.week = week;
@@ -42,8 +42,8 @@ public class ClassDB {
     public ClassDB() {
     }
 
-    public ClassDB( String className, String tag, long changTime) {
-         this.className = className;
+    public ClassDB(String className, String tag, long changTime) {
+        this.className = className;
         this.tag = tag;
         this.changTime = changTime;
     }

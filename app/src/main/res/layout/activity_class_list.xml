@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg_login"
-    android:orientation="vertical"
-    tools:context="com.waterfairy.reminder.activity.MemorandumActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/bg_login"
+              android:orientation="vertical"
+              tools:context="com.waterfairy.reminder.activity.MemorandumActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="back"
             android:padding="8dp"
-            android:src="@mipmap/back" />
+            android:src="@mipmap/back"/>
 
         <TextView
             android:id="@+id/title"
@@ -31,7 +30,7 @@
             android:layout_toRightOf="@+id/back"
             android:text="课程表"
             android:textColor="@color/colorWhite"
-            android:textSize="17dp" />
+            android:textSize="17dp"/>
 
         <ImageView
             android:layout_width="40dp"
@@ -41,13 +40,13 @@
             android:layout_marginRight="10dp"
             android:onClick="add"
             android:padding="5dp"
-            android:src="@mipmap/plus" />
+            android:src="@mipmap/plus"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite" />
+        android:background="@color/colorWhite"/>
 
 </LinearLayout>

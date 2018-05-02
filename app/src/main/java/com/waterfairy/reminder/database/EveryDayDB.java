@@ -3,12 +3,12 @@ package com.waterfairy.reminder.database;
 import com.waterfairy.reminder.utils.ShareTool;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2018/2/23
  * des  :
  */
@@ -23,7 +23,7 @@ public class EveryDayDB {
 
     @Generated(hash = 805519624)
     public EveryDayDB(Long id, String account, String content, long time,
-            long changeTime) {
+                      long changeTime) {
         this.id = id;
         this.account = account;
         this.content = content;
@@ -38,8 +38,8 @@ public class EveryDayDB {
         this.changeTime = changeTime;
     }
 
-    public EveryDayDB(String account,String content, long time, long changeTime) {
-        this.account=account;
+    public EveryDayDB(String account, String content, long time, long changeTime) {
+        this.account = account;
         this.content = content;
         this.time = time;
         this.changeTime = changeTime;

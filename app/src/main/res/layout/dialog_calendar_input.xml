@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="添加日程"
             android:textColor="@color/colorWhite"
-            android:textSize="18dp" />
+            android:textSize="18dp"/>
 
         <EditText
             android:id="@+id/content"
@@ -27,7 +27,7 @@
             android:maxLength="15"
             android:singleLine="true"
             android:textColor="@color/colorWhite"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
 
 
         <LinearLayout
@@ -45,7 +45,7 @@
                 android:gravity="center"
                 android:text="取消"
                 android:textColor="@color/colorAccent"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/ensure"
@@ -54,7 +54,7 @@
                 android:gravity="center"
                 android:text="确定"
                 android:textColor="@color/colorAccent"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
         </LinearLayout>
 
 

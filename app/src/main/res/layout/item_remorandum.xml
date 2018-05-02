@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/style_pressed"
-    android:orientation="vertical"
-    android:paddingTop="10dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/style_pressed"
+              android:orientation="vertical"
+              android:paddingTop="10dp">
 
     <TextView
         android:id="@+id/time"
@@ -14,7 +14,7 @@
         android:layout_marginRight="10dp"
         android:singleLine="true"
         android:textColor="@color/colorTextBlack"
-        android:textSize="14dp" />
+        android:textSize="14dp"/>
 
     <TextView
         android:id="@+id/content"
@@ -24,7 +24,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@color/colorTextBlack"
-        android:textSize="16dp" />
+        android:textSize="16dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -32,6 +32,6 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorGray" />
+        android:background="@color/colorGray"/>
 
 </LinearLayout>

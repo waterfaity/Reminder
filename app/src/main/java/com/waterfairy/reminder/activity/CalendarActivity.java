@@ -1,10 +1,10 @@
 package com.waterfairy.reminder.activity;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,6 +21,9 @@ import com.waterfairy.reminder.utils.ShareTool;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 日历界面
+ */
 public class CalendarActivity extends AppCompatActivity implements CalendarView.OnDateChangeListener, EveryDayAdapter.OnItemLongClickListener {
     private RecyclerView mRecyclerView;
     private CalendarView mCalendarView;
@@ -66,6 +69,11 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
         finish();
     }
 
+    /**
+     * 添加日历
+     *
+     * @param view
+     */
     public void add(View view) {
         CalendarInputDialog calendarInputDialog = new CalendarInputDialog(this, "添加日程", "", new CalendarInputDialog.OnInputListener() {
             @Override
@@ -85,14 +93,14 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
         for (int i = 0; i < mDataList.size(); i++) {
             EveryDayDB everyDayDB = mDataList.get(i);
             if (date.getTime() >= everyDayDB.getTime()) {
-              mRecyclerView.smoothScrollToPosition(i);
-              return;
+                mRecyclerView.smoothScrollToPosition(i);
+                return;
             }
         }
     }
 
     /**
-     * 删除每天  主要代码
+     * 删除 日历记录 主要代码
      *
      * @param db
      * @param pos

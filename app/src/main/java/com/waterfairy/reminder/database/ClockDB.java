@@ -5,13 +5,13 @@ import android.text.TextUtils;
 import com.waterfairy.reminder.manger.ClockManger;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Transient;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2017/11/25
  * des  :闹钟数据库
  */

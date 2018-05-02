@@ -14,7 +14,6 @@ import android.widget.TimePicker;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.database.ClockDB;
-import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import java.util.List;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2017/11/25
  * des  :闹钟设置 (添加/修改/删除) 弹窗
  */

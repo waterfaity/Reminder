@@ -2,13 +2,11 @@ package com.waterfairy.reminder.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.waterfairy.reminder.R;
@@ -21,6 +19,9 @@ import com.waterfairy.reminder.utils.ShareTool;
 
 import java.util.List;
 
+/**
+ * 备忘录 页面
+ */
 public class MemorandumActivity extends AppCompatActivity implements MemorandumAdapter.OnItemClickListener, MemorandumAdapter.OnItemLongClickListener {
 
     private RecyclerView mRecyclerView;
@@ -111,7 +112,7 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
     }
 
     /**
-     * 删除
+     * 删除 备忘录
      *
      * @param db
      * @param pos
@@ -132,7 +133,7 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
     }
 
     /**
-     * 编辑
+     * 编辑 备忘录
      *
      * @param db
      * @param pos

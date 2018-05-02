@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg_login"
-    android:orientation="vertical"
-    tools:context="com.waterfairy.reminder.activity.LoginActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/bg_login"
+              android:orientation="vertical"
+              tools:context="com.waterfairy.reminder.activity.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:background="@mipmap/clock"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -35,7 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/colorMainDeep" />
+            android:background="@color/colorMainDeep"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +44,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/accounts" />
+                android:src="@mipmap/accounts"/>
 
             <EditText
                 android:id="@+id/account"
@@ -58,13 +57,13 @@
                 android:singleLine="true"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorGrayWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/colorMainDeep" />
+            android:background="@color/colorMainDeep"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,7 +73,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/password" />
+                android:src="@mipmap/password"/>
 
             <EditText
                 android:id="@+id/password"
@@ -88,20 +87,20 @@
                 android:singleLine="true"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorGrayWhite"
-                android:textSize="14dp" />
+                android:textSize="14dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/colorMainDeep" />
+            android:background="@color/colorMainDeep"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="login"
-            android:text="登录" />
+            android:text="登录"/>
 
         <TextView
             android:layout_width="60dp"
@@ -111,6 +110,6 @@
             android:gravity="center"
             android:onClick="register"
             android:text="注册"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 </LinearLayout>

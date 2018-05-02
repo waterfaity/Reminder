@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg_login"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/bg_login"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="back"
             android:padding="8dp"
-            android:src="@mipmap/back" />
+            android:src="@mipmap/back"/>
 
         <TextView
             android:id="@+id/title"
@@ -28,7 +28,7 @@
             android:layout_toRightOf="@+id/back"
             android:text="课程表"
             android:textColor="@color/colorWhite"
-            android:textSize="17dp" />
+            android:textSize="17dp"/>
 
         <ImageView
             android:visibility="gone"
@@ -39,7 +39,7 @@
             android:layout_marginRight="10dp"
             android:onClick="add"
             android:padding="5dp"
-            android:src="@mipmap/plus" />
+            android:src="@mipmap/plus"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -61,43 +61,43 @@
                     android:id="@+id/week_1"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <include
                     android:id="@+id/week_2"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <include
                     android:id="@+id/week_3"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <include
                     android:id="@+id/week_4"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <include
                     android:id="@+id/week_5"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <include
                     android:id="@+id/week_6"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <include
                     android:id="@+id/week_7"
                     layout="@layout/item_class_vertical"
                     android:layout_width="80dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>

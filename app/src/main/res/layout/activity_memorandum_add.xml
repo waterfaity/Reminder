@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:orientation="vertical"
-    tools:context="com.waterfairy.reminder.activity.MemorandumAddActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorWhite"
+              android:orientation="vertical"
+              tools:context="com.waterfairy.reminder.activity.MemorandumAddActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="back"
             android:padding="8dp"
-            android:src="@mipmap/back" />
+            android:src="@mipmap/back"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
             android:layout_toRightOf="@+id/back"
             android:text="添加"
             android:textColor="@color/colorWhite"
-            android:textSize="17dp" />
+            android:textSize="17dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +44,7 @@
             android:src="@mipmap/plus"
             android:text="保存"
             android:textColor="@color/colorWhite"
-            android:textSize="16dp" />
+            android:textSize="16dp"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -65,7 +64,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:text="时间:    2018-12-12"
-            android:textColor="@color/colorTextBlack" />
+            android:textColor="@color/colorTextBlack"/>
 
 
         <EditText
@@ -78,6 +77,6 @@
             android:textColorHint="@color/colorGray"
             android:hint="(最多150字)"
             android:padding="5dp"
-            android:textColor="@color/colorTextBlack" />
+            android:textColor="@color/colorTextBlack"/>
     </LinearLayout>
 </LinearLayout>

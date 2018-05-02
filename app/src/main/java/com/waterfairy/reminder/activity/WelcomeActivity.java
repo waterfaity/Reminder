@@ -1,21 +1,17 @@
 package com.waterfairy.reminder.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.waterfairy.reminder.R;
-import com.waterfairy.reminder.database.greendao.UserDBDao;
-import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.manger.DataInitManger;
 import com.waterfairy.reminder.service.ClockService;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.PermissionUtils;
-
-import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
 
 /**
  * 欢迎页

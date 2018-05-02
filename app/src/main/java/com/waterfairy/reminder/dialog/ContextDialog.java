@@ -10,7 +10,7 @@ import com.waterfairy.reminder.R;
 
 /**
  * user : water_fairy
- * email:995637517@qq.com
+ * email:971409587@qq.com
  * date :2018/4/19
  * des  :
  */
