@@ -23,10 +23,13 @@ import java.util.Date;
  * 备忘录 添加页面
  */
 public class MemorandumAddActivity extends AppCompatActivity implements OnSureLisener {
+    public static final String STR_DB = "memorandumDb";
+    public static final String STR_POS = "pos";
     private TextView mTime;
     private EditText mContent;
     private Date date;
     private MemorandumDBDao memorandumDBDao;
+    private MemorandumDB memorandumDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,14 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
 
     private void initData() {
         memorandumDBDao = DataBaseManger.getInstance().getDaoSession().getMemorandumDBDao();
-        onSure(new Date());
+        memorandumDB = (MemorandumDB) getIntent().getSerializableExtra(STR_DB);
+        if (memorandumDB == null) {
+            onSure(new Date());
+        } else {
+            //修改
+            onSure(new Date(memorandumDB.getTime()));
+            mContent.setText(memorandumDB.getContent());
+        }
     }
 
     private void initView() {
@@ -65,7 +75,16 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
             ToastUtils.show("请输入内容");
             return;
         }
-        memorandumDBDao.save(new MemorandumDB(s, date.getTime(), new Date().getTime()));
+        if (memorandumDB != null) {
+            //修改
+            memorandumDB.setContent(s);
+            memorandumDB.setTime(date.getTime());
+            memorandumDB.setChangeTime(new Date().getTime());
+            memorandumDBDao.update(memorandumDB);
+        } else {
+            //创建新的
+            memorandumDBDao.save(new MemorandumDB(s, date.getTime(), new Date().getTime()));
+        }
         setResult(RESULT_OK);
         finish();
     }

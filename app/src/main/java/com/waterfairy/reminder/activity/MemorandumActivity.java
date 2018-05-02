@@ -7,12 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.adapter.MemorandumAdapter;
 import com.waterfairy.reminder.database.MemorandumDB;
 import com.waterfairy.reminder.database.greendao.MemorandumDBDao;
+import com.waterfairy.reminder.dialog.ContextDialog;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
 
@@ -22,6 +25,8 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
 
     private RecyclerView mRecyclerView;
     private MemorandumDBDao memorandumDBDao;
+    private MemorandumDB selectdb;
+    private int selectPos;
 
 
     @Override
@@ -89,6 +94,29 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
      */
     @Override
     public void onItemLongClick(final MemorandumDB db, final int pos) {
+        selectdb = db;
+        selectPos = pos;
+        ContextDialog contextDialog = new ContextDialog(this);
+        contextDialog.setOnMenuClickListener(new ContextDialog.OnMenuClickListener() {
+            @Override
+            public void onMenuClick(int pos) {
+                if (pos == 0) {
+                    edit(selectdb, selectPos);
+                } else {
+                    delete(selectdb, selectPos);
+                }
+            }
+        });
+        contextDialog.show();
+    }
+
+    /**
+     * 删除
+     *
+     * @param db
+     * @param pos
+     */
+    private void delete(final MemorandumDB db, final int pos) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("提示");
         builder.setMessage("删除这条备忘录吗?");
@@ -101,5 +129,24 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
         });
         builder.setNegativeButton("取消", null);
         builder.create().show();
+    }
+
+    /**
+     * 编辑
+     *
+     * @param db
+     * @param pos
+     */
+    private void edit(final MemorandumDB db, final int pos) {
+        Intent intent = new Intent(this, MemorandumAddActivity.class);
+        intent.putExtra(MemorandumAddActivity.STR_DB, selectdb);
+        intent.putExtra(MemorandumAddActivity.STR_POS, pos);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterForContextMenu(mRecyclerView);
     }
 }
