@@ -2,13 +2,25 @@ package com.waterfairy.reminder.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 
 import com.waterfairy.reminder.R;
+import com.waterfairy.reminder.manger.AudioManger;
+import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.utils.ShareTool;
+import com.waterfairy.utils.ToastUtils;
+
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -20,8 +32,64 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void test() {
-//        AudioManger.getInstance().startAudio();
+        try {
+            File databasesFile = new File(getCacheDir().getParentFile(), "databases");
+            File[] files = databasesFile.listFiles();
+            for (File file1 : files) {
+                copyFile(file1);
+            }
+
+        } catch (Exception ignored) {
+
+        }
+
     }
+
+    private void copyFile(File file) {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            String localFile = getLocalFile(file);
+            if (TextUtils.isEmpty(localFile)) {
+                return;
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream(localFile);
+            byte[] bytes = new byte[1024 * 512];
+
+            try {
+                int len = 0;
+                while ((len = fileInputStream.read(bytes)) != -1) {
+                    fileOutputStream.write(bytes, 0, len);
+                }
+                fileOutputStream.flush();
+                fileInputStream.close();
+                fileOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getLocalFile(File file) {
+        File targetFile = new File("/sdcard/reminder/" + file.getName());
+        if (!targetFile.exists()) {
+            File parentFile = targetFile.getParentFile();
+            if (!parentFile.exists()) {
+                parentFile.mkdirs();
+            }
+            try {
+                targetFile.createNewFile();
+                return targetFile.getAbsolutePath();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            return targetFile.getAbsolutePath();
+        }
+        return null;
+    }
+
 
     /**
      * 备忘录
@@ -57,7 +125,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param view
      */
     public void classList(View view) {
-        startActivity(new Intent(this, ClassListActivity.class));
+        startActivity(new Intent(this, ClassList2Activity.class));
     }
 
     /**
