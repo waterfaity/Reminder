@@ -33,7 +33,6 @@ public class ClassSpinnerAdapter implements SpinnerAdapter {
         convertView = LayoutInflater.from(context).inflate(R.layout.item_spinner, parent, false);
         TextView textView = convertView.findViewById(R.id.text);
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
-        textView.setTextColor(Color.WHITE);
         textView.setText(strings[position]);
         return convertView;
     }

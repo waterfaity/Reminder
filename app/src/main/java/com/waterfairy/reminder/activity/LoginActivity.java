@@ -8,12 +8,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.waterfairy.reminder.R;
+import com.waterfairy.reminder.database.MemorandumCategoryDB;
 import com.waterfairy.reminder.database.UserDB;
+import com.waterfairy.reminder.database.greendao.MemorandumCategoryDBDao;
 import com.waterfairy.reminder.database.greendao.UserDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.ShareTool;
 import com.waterfairy.utils.ToastUtils;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,6 +46,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initData() {
         userDBDao = DataBaseManger.getInstance().getDaoSession().getUserDBDao();
+        insertMemorandumCategoryData();
+    }
+
+    //插入默认备忘录分类
+    private void insertMemorandumCategoryData() {
+        MemorandumCategoryDBDao memorandumCategoryDBDao = DataBaseManger.getInstance().getDaoSession().getMemorandumCategoryDBDao();
+        List<MemorandumCategoryDB> categoryDBS = memorandumCategoryDBDao.queryBuilder().where(MemorandumCategoryDBDao.Properties.Name.eq("其它")).limit(1).list();
+        if (categoryDBS.size() == 0) {
+            memorandumCategoryDBDao.save(new MemorandumCategoryDB(new Date().getTime(), new Date().getTime(), "其它"));
+            memorandumCategoryDBDao.save(new MemorandumCategoryDB(new Date().getTime(), new Date().getTime(), "睡觉"));
+            memorandumCategoryDBDao.save(new MemorandumCategoryDB(new Date().getTime(), new Date().getTime(), "吃饭"));
+            memorandumCategoryDBDao.save(new MemorandumCategoryDB(new Date().getTime(), new Date().getTime(), "学习"));
+            memorandumCategoryDBDao.save(new MemorandumCategoryDB(new Date().getTime(), new Date().getTime(), "运动"));
+        }
     }
 
     /**

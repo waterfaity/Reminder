@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:background="@mipmap/bg_login"
-                                                 tools:context="com.waterfairy.reminder.activity.ClockActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_login"
+    tools:context="com.waterfairy.reminder.activity.ClockActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="back"
             android:padding="8dp"
-            android:src="@mipmap/back"/>
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_toRightOf="@+id/back"
             android:text="闹钟"
             android:textColor="@color/colorWhite"
-            android:textSize="17dp"/>
+            android:textSize="17dp" />
 
     </RelativeLayout>
 
@@ -37,7 +37,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp"/>
+        android:layout_marginTop="56dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add"
@@ -47,7 +47,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:onClick="addClock"
-        android:src="@mipmap/plus"/>
+        android:src="@mipmap/plus" />
 
 
 </android.support.design.widget.CoordinatorLayout>

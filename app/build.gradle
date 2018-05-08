@@ -57,7 +57,7 @@ dependencies {
 greendao {
     schemaVersion 1
     //数据版本
-    schemaVersion 5
+    schemaVersion 1
     daoPackage 'com.waterfairy.reminder.database.greendao'
     //生成到主目录 src/main/java
     targetGenDir 'src/main/java'

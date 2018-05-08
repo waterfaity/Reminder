@@ -4,20 +4,26 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.codbking.widget.DatePickDialog;
 import com.codbking.widget.OnSureLisener;
 import com.codbking.widget.bean.DateType;
 import com.waterfairy.reminder.R;
+import com.waterfairy.reminder.adapter.ClassSpinnerAdapter;
+import com.waterfairy.reminder.database.MemorandumCategoryDB;
 import com.waterfairy.reminder.database.MemorandumDB;
+import com.waterfairy.reminder.database.greendao.MemorandumCategoryDBDao;
 import com.waterfairy.reminder.database.greendao.MemorandumDBDao;
 import com.waterfairy.reminder.manger.DataBaseManger;
 import com.waterfairy.reminder.utils.TimeUtils;
 import com.waterfairy.utils.ToastUtils;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 备忘录 添加页面
@@ -27,9 +33,14 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
     public static final String STR_POS = "pos";
     private TextView mTime;
     private EditText mContent;
+    private Spinner mSpinner;
     private Date date;
     private MemorandumDBDao memorandumDBDao;
     private MemorandumDB memorandumDB;
+    private ClassSpinnerAdapter adapter;
+
+    private MemorandumCategoryDBDao memorandumCategoryDBDao;
+    private List<MemorandumCategoryDB> categoryDBList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,7 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
     private void initData() {
         memorandumDBDao = DataBaseManger.getInstance().getDaoSession().getMemorandumDBDao();
         memorandumDB = (MemorandumDB) getIntent().getSerializableExtra(STR_DB);
+        memorandumCategoryDBDao = DataBaseManger.getInstance().getDaoSession().getMemorandumCategoryDBDao();
         if (memorandumDB == null) {
             onSure(new Date());
         } else {
@@ -50,6 +62,27 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
             onSure(new Date(memorandumDB.getTime()));
             mContent.setText(memorandumDB.getContent());
         }
+        queryCategory();
+    }
+
+    /**
+     * 查询分类
+     */
+    private void queryCategory() {
+        Long categoryId = -1L;
+        if (memorandumDB != null)
+            categoryId = memorandumDB.getCategoryId();
+        categoryDBList = memorandumCategoryDBDao.queryBuilder().orderDesc(MemorandumCategoryDBDao.Properties.CreateTime).list();
+        int selectPos = categoryDBList.size()-1;
+        String strings[] = new String[categoryDBList.size()];
+        for (int i = 0; i < categoryDBList.size(); i++) {
+            strings[i] = (categoryDBList.get(i).getName());
+            if ((long) (categoryDBList.get(i).getId()) == (long) categoryId) {
+                selectPos = i;
+            }
+        }
+        mSpinner.setAdapter(adapter = new ClassSpinnerAdapter(this, strings));
+        mSpinner.setSelection(selectPos);
     }
 
     private void initView() {
@@ -59,6 +92,7 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
     private void findView() {
         mContent = findViewById(R.id.et_content);
         mTime = findViewById(R.id.time);
+        mSpinner = findViewById(R.id.spinner);
     }
 
     public void back(View view) {
@@ -80,10 +114,11 @@ public class MemorandumAddActivity extends AppCompatActivity implements OnSureLi
             memorandumDB.setContent(s);
             memorandumDB.setTime(date.getTime());
             memorandumDB.setChangeTime(new Date().getTime());
+            memorandumDB.setCategoryId(categoryDBList.get(mSpinner.getSelectedItemPosition()).getId());
             memorandumDBDao.update(memorandumDB);
         } else {
             //创建新的
-            memorandumDBDao.save(new MemorandumDB(s, date.getTime(), new Date().getTime()));
+            memorandumDBDao.save(new MemorandumDB(s, date.getTime(), new Date().getTime()).setCategoryId(categoryDBList.get(mSpinner.getSelectedItemPosition()).getId()));
         }
         setResult(RESULT_OK);
         finish();

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/colorWhite"
-              android:orientation="vertical"
-              tools:context="com.waterfairy.reminder.activity.MemorandumAddActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context="com.waterfairy.reminder.activity.MemorandumAddActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="back"
             android:padding="8dp"
-            android:src="@mipmap/back"/>
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_toRightOf="@+id/back"
             android:text="添加课程"
             android:textColor="@color/colorWhite"
-            android:textSize="17dp"/>
+            android:textSize="17dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:src="@mipmap/plus"
             android:text="保存"
             android:textColor="@color/colorWhite"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -57,19 +57,19 @@
             android:layout_marginTop="10dp"
             android:id="@+id/week"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:layout_marginTop="10dp"
             android:id="@+id/time"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:layout_marginTop="10dp"
             android:id="@+id/level"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:textColor="@color/colorTextBlack"
@@ -80,6 +80,6 @@
             android:hint="请输入课程"
             android:maxLength="12"
             android:singleLine="true"
-            android:textColorHint="@color/colorGray"/>
+            android:textColorHint="@color/colorGray" />
     </LinearLayout>
 </LinearLayout>

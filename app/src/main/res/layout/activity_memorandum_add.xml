@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/colorWhite"
-              android:orientation="vertical"
-              tools:context="com.waterfairy.reminder.activity.MemorandumAddActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgGray"
+    android:orientation="vertical"
+    tools:context="com.waterfairy.reminder.activity.MemorandumAddActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="back"
             android:padding="8dp"
-            android:src="@mipmap/back"/>
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_toRightOf="@+id/back"
             android:text="添加"
             android:textColor="@color/colorWhite"
-            android:textSize="17dp"/>
+            android:textSize="17dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:src="@mipmap/plus"
             android:text="保存"
             android:textColor="@color/colorWhite"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -52,6 +52,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_edit"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/time"
@@ -64,7 +80,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:text="时间:    2018-12-12"
-            android:textColor="@color/colorTextBlack"/>
+            android:textColor="@color/colorTextBlack" />
 
 
         <EditText
@@ -73,10 +89,10 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_edit"
             android:gravity="left|top"
-            android:maxLength="150"
-            android:textColorHint="@color/colorGray"
             android:hint="(最多150字)"
+            android:maxLength="150"
             android:padding="5dp"
-            android:textColor="@color/colorTextBlack"/>
+            android:textColor="@color/colorTextBlack"
+            android:textColorHint="@color/colorGray" />
     </LinearLayout>
 </LinearLayout>

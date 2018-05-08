@@ -24,13 +24,17 @@ public class MemorandumDB implements Serializable {
     private long time;
     private long changeTime;
 
-    @Generated(hash = 982489309)
-    public MemorandumDB(Long id, String account, String content, long time, long changeTime) {
+    private Long categoryId;
+
+    @Generated(hash = 1997177675)
+    public MemorandumDB(Long id, String account, String content, long time, long changeTime,
+            Long categoryId) {
         this.id = id;
         this.account = account;
         this.content = content;
         this.time = time;
         this.changeTime = changeTime;
+        this.categoryId = categoryId;
     }
 
     @Generated(hash = 513710216)
@@ -89,5 +93,14 @@ public class MemorandumDB implements Serializable {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public Long getCategoryId() {
+        return this.categoryId;
+    }
+
+    public MemorandumDB setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+        return this;
     }
 }

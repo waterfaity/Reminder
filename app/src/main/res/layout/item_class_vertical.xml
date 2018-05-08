@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/class_1"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <View
         android:layout_width="80dp"
         android:layout_height="1px"
         android:layout_marginTop="1dp"
-        android:background="@color/colorGray"/>
+        android:background="@color/colorGray" />
 
     <include
         android:id="@+id/class_2"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_3"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_4"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_5"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <View
         android:layout_width="80dp"
         android:layout_height="1px"
         android:layout_marginTop="1dp"
-        android:background="@color/colorGray"/>
+        android:background="@color/colorGray" />
 
     <include
         android:id="@+id/class_6"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
 
     <include
         android:id="@+id/class_7"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_8"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_9"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <View
         android:layout_width="80dp"
         android:layout_height="1px"
         android:layout_marginTop="1dp"
-        android:background="@color/colorGray"/>
+        android:background="@color/colorGray" />
 
     <include
         android:id="@+id/class_10"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
 
     <include
         android:id="@+id/class_11"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_12"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
     <include
         android:id="@+id/class_13"
         layout="@layout/item_class_vertical_one"
         android:layout_width="80dp"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp" />
 
 
 </LinearLayout>

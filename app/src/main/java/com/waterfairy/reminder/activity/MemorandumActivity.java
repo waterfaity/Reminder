@@ -81,11 +81,6 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
         }
     }
 
-    @Override
-    public void onItemClick(MemorandumDB db, int pos) {
-
-    }
-
     /**
      * 备忘录删除 主要代码
      * dialog  -> 确定 ->删除
@@ -94,7 +89,7 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
      * @param pos
      */
     @Override
-    public void onItemLongClick(final MemorandumDB db, final int pos) {
+    public void onItemClick(MemorandumDB db, int pos) {
         selectdb = db;
         selectPos = pos;
         ContextDialog contextDialog = new ContextDialog(this);
@@ -109,6 +104,11 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
             }
         });
         contextDialog.show();
+    }
+
+    @Override
+    public void onItemLongClick(final MemorandumDB db, final int pos) {
+
     }
 
     /**
@@ -149,5 +149,23 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
     protected void onDestroy() {
         super.onDestroy();
         unregisterForContextMenu(mRecyclerView);
+    }
+
+    /**
+     * 分析表格
+     *
+     * @param view
+     */
+    public void form(View view) {
+
+    }
+
+    /**
+     * 添加元素
+     *
+     * @param view
+     */
+    public void addItem(View view) {
+        startActivity(new Intent(this,CategoryActivity. class));
     }
 }
