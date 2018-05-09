@@ -157,7 +157,7 @@ public class MemorandumActivity extends AppCompatActivity implements MemorandumA
      * @param view
      */
     public void form(View view) {
-
+startActivity(new Intent(this,MemorandumFormActivity.class));
     }
 
     /**

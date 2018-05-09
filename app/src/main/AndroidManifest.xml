@@ -78,7 +78,11 @@
             android:name=".activity.CalendarActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarDark" />
-        <activity android:name=".activity.CategoryActivity"
+        <activity
+            android:name=".activity.CategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarDark" />
+        <activity android:name=".activity.MemorandumFormActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarDark"
             />
