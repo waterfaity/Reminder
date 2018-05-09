@@ -50,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
             FileOutputStream fileOutputStream = new FileOutputStream(localFile);
             byte[] bytes = new byte[1024 * 512];
 
+
+
             try {
                 int len = 0;
                 while ((len = fileInputStream.read(bytes)) != -1) {
