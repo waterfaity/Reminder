@@ -24,9 +24,9 @@ public class DaoMaster extends AbstractDaoMaster {
         ClassDBDao.createTable(db, ifNotExists);
         ClockDBDao.createTable(db, ifNotExists);
         EveryDayDBDao.createTable(db, ifNotExists);
+        MemorandumCategoryDBDao.createTable(db, ifNotExists);
         MemorandumDBDao.createTable(db, ifNotExists);
         UserDBDao.createTable(db, ifNotExists);
-        MemorandumCategoryDBDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -34,9 +34,9 @@ public class DaoMaster extends AbstractDaoMaster {
         ClassDBDao.dropTable(db, ifExists);
         ClockDBDao.dropTable(db, ifExists);
         EveryDayDBDao.dropTable(db, ifExists);
+        MemorandumCategoryDBDao.dropTable(db, ifExists);
         MemorandumDBDao.dropTable(db, ifExists);
         UserDBDao.dropTable(db, ifExists);
-        MemorandumCategoryDBDao.dropTable(db, ifExists);
     }
 
     /**
@@ -58,9 +58,9 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(ClassDBDao.class);
         registerDaoClass(ClockDBDao.class);
         registerDaoClass(EveryDayDBDao.class);
+        registerDaoClass(MemorandumCategoryDBDao.class);
         registerDaoClass(MemorandumDBDao.class);
         registerDaoClass(UserDBDao.class);
-        registerDaoClass(MemorandumCategoryDBDao.class);
     }
 
     public DaoSession newSession() {
