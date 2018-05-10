@@ -32,6 +32,7 @@ public class ClassDBDao extends AbstractDao<ClassDB, Long> {
         public final static Property ClassName = new Property(5, String.class, "className", false, "CLASS_NAME");
         public final static Property Tag = new Property(6, String.class, "tag", false, "TAG");
         public final static Property ChangTime = new Property(7, long.class, "changTime", false, "CHANG_TIME");
+        public final static Property Open = new Property(8, boolean.class, "open", false, "OPEN");
     }
 
 
@@ -54,7 +55,8 @@ public class ClassDBDao extends AbstractDao<ClassDB, Long> {
                 "\"LEVEL\" INTEGER NOT NULL ," + // 4: level
                 "\"CLASS_NAME\" TEXT," + // 5: className
                 "\"TAG\" TEXT," + // 6: tag
-                "\"CHANG_TIME\" INTEGER NOT NULL );"); // 7: changTime
+                "\"CHANG_TIME\" INTEGER NOT NULL ," + // 7: changTime
+                "\"OPEN\" INTEGER NOT NULL );"); // 8: open
     }
 
     /** Drops the underlying database table. */
@@ -90,6 +92,7 @@ public class ClassDBDao extends AbstractDao<ClassDB, Long> {
             stmt.bindString(7, tag);
         }
         stmt.bindLong(8, entity.getChangTime());
+        stmt.bindLong(9, entity.getOpen() ? 1L: 0L);
     }
 
     @Override
@@ -119,6 +122,7 @@ public class ClassDBDao extends AbstractDao<ClassDB, Long> {
             stmt.bindString(7, tag);
         }
         stmt.bindLong(8, entity.getChangTime());
+        stmt.bindLong(9, entity.getOpen() ? 1L: 0L);
     }
 
     @Override
@@ -136,7 +140,8 @@ public class ClassDBDao extends AbstractDao<ClassDB, Long> {
             cursor.getInt(offset + 4), // level
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // className
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // tag
-            cursor.getLong(offset + 7) // changTime
+            cursor.getLong(offset + 7), // changTime
+            cursor.getShort(offset + 8) != 0 // open
         );
         return entity;
     }
@@ -151,6 +156,7 @@ public class ClassDBDao extends AbstractDao<ClassDB, Long> {
         entity.setClassName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setTag(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setChangTime(cursor.getLong(offset + 7));
+        entity.setOpen(cursor.getShort(offset + 8) != 0);
      }
     
     @Override

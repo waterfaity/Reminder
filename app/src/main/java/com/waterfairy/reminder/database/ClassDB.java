@@ -24,10 +24,11 @@ public class ClassDB {
     private String className;//课程
     private String tag;//标记  对应课表坐标 (0_1) 开始
     private long changTime;
+    private boolean open;
 
-    @Generated(hash = 1243900389)
+    @Generated(hash = 1716200488)
     public ClassDB(Long id, String account, int week, int time, int level, String className, String tag,
-                   long changTime) {
+            long changTime, boolean open) {
         this.id = id;
         this.account = account;
         this.week = week;
@@ -36,6 +37,7 @@ public class ClassDB {
         this.className = className;
         this.tag = tag;
         this.changTime = changTime;
+        this.open = open;
     }
 
     @Generated(hash = 370749809)
@@ -177,5 +179,17 @@ public class ClassDB {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public boolean getOpen() {
+        return this.open;
     }
 }

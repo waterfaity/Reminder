@@ -15,8 +15,11 @@ import com.waterfairy.reminder.R;
 import com.waterfairy.reminder.adapter.ClassAdapter;
 import com.waterfairy.reminder.database.ClassDB;
 import com.waterfairy.reminder.database.greendao.ClassDBDao;
+import com.waterfairy.reminder.dialog.ContextDialog;
 import com.waterfairy.reminder.dialog.InputDialog;
+import com.waterfairy.reminder.manger.ClockManger;
 import com.waterfairy.reminder.manger.DataBaseManger;
+import com.waterfairy.reminder.service.ClockService;
 import com.waterfairy.reminder.utils.WeekUtils;
 import com.waterfairy.utils.ToastUtils;
 
@@ -76,7 +79,7 @@ public class ClassListActivity extends AppCompatActivity implements ClassAdapter
             String[] split = tag.split("_");
             TextView textView = weekList.get(Integer.parseInt(split[0])).get(Integer.parseInt(split[1]));
             textView.setText(classDB.getClassName());
-
+            textView.setTextColor(getResources().getColor(classDB.isOpen() ? R.color.colorActionBar : R.color.textColor));
         }
     }
 
@@ -162,6 +165,8 @@ public class ClassListActivity extends AppCompatActivity implements ClassAdapter
             }
         });
         alertDialog.show();
+        stopClock();
+        updateClock();
     }
 
     @Override
@@ -211,21 +216,50 @@ public class ClassListActivity extends AppCompatActivity implements ClassAdapter
         //数据库保存课程
         classDBDao.save(new ClassDB(content, tag, new Date().getTime()));
         textView.setText(content);
+        stopClock();
+        updateClock();
     }
+
 
     @Override
     public boolean onLongClick(View v) {
+        stopClock();
         textView = (TextView) v;
-        textView.setBackgroundColor(Color.CYAN);
         String tag = (String) v.getTag();
         if (!TextUtils.isEmpty(textView.getText().toString())) {
+            textView.setBackgroundColor(Color.CYAN);
             List<ClassDB> list = classDBDao.queryBuilder().where(
                     ClassDBDao.Properties.Tag.eq(tag)).list();
             if (list != null) {
-                ClassDB classDB = list.get(0);
-                onDelete(classDB);
+                final ClassDB classDB = list.get(0);
+                final ContextDialog contextDialog = new ContextDialog(this, classDB.isOpen() ? "关闭闹钟提醒" : "打开闹钟提醒", "删除课程");
+                contextDialog.setOnMenuClickListener(new ContextDialog.OnMenuClickListener() {
+                    @Override
+                    public void onMenuClick(int pos) {
+                        if (pos == 0) {
+                            classDB.setOpen(!classDB.isOpen());
+                            classDBDao.update(classDB);
+                            textView.setTextColor(getResources().getColor(classDB.isOpen() ? R.color.colorActionBar : R.color.textColor));
+                            textView.setBackgroundColor(Color.WHITE);
+                            stopClock();
+                            updateClock();
+                        } else {
+                            onDelete(classDB);
+                        }
+                        contextDialog.dismiss();
+                    }
+                });
+                contextDialog.show();
             }
         }
         return false;
+    }
+
+    private void updateClock() {
+        ClockManger.getInstance().initClock();
+    }
+
+    private void stopClock() {
+        ClockManger.getInstance().stopClock(this);
     }
 }

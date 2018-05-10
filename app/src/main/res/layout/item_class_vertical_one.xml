@@ -8,7 +8,7 @@
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:textColor="#88000000"
+        android:textColor="@color/textColor"
         android:textSize="14dp"/>
 
     <View
